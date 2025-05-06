@@ -1,8 +1,117 @@
 @import "tailwindcss";
 
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Colors */
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-blue-primary: #0051ff;
+  --color-blue-dark: #003099;
+  --color-blue-darker: #00277c;
+  --color-blue-darkest: #001544;
+  --color-blue-light: #3d7aff;
+  --color-blue-lightest: #b3cbff;
+  --color-light-blue: #c5d8ff;
+  --color-pink-light: #ffeefd;
+
+  /* Gradients */
+  --gradient-blue: linear-gradient(
+    to right,
+    var(--color-blue-primary),
+    var(--color-blue-dark)
+  );
+  --gradient-toggle: linear-gradient(
+    to left,
+    var(--color-blue-primary),
+    var(--color-blue-dark),
+    var(--color-black)
+  );
+  --gradient-white: linear-gradient(
+    to right,
+    var(--color-light-blue),
+    var(--color-white),
+    var(--color-white)
+  );
+  --gradient-landing: linear-gradient(
+    to bottom,
+    var(--color-white),
+    var(--color-blue-lightest),
+    var(--color-blue-light),
+    var(--color-blue-primary),
+    var(--color-blue-darkest)
+  );
+  --gradient-variant1: linear-gradient(
+    to left,
+    var(--color-white),
+    var(--color-blue-lightest),
+    var(--color-blue-light),
+    var(--color-blue-primary),
+    var(--color-blue-darkest)
+  );
+  --gradient-variant2: radial-gradient(
+    ellipse at 70% 30%,
+    var(--color-blue-darkest) 0%,
+    var(--color-blue-primary) 30%,
+    var(--color-blue-light) 60%,
+    var(--color-blue-lightest) 85%,
+    var(--color-white) 100%
+  );
+  --gradient-variant3: radial-gradient(
+    ellipse at 0% 30%,
+    var(--color-blue-darkest) 0%,
+    var(--color-blue-primary) 30%,
+    var(--color-blue-light) 60%,
+    var(--color-blue-lightest) 85%,
+    var(--color-white) 100%
+  );
+  --gradient-info-section: linear-gradient(
+    to bottom,
+    var(--color-white),
+    var(--color-pink-light) 16%,
+    var(--color-blue-primary) 84%,
+    var(--color-blue-darker)
+  );
+  --gradient-payment: linear-gradient(
+    to bottom,
+    var(--color-blue-dark),
+    var(--color-black)
+  );
+  --gradient-payment-card-primary: linear-gradient(
+    to bottom,
+    var(--color-blue-primary),
+    var(--color-white)
+  );
+  --gradient-payment-card-secondary: linear-gradient(
+    to bottom,
+    var(--color-blue-darker),
+    var(--color-white)
+  );
+
+  /* Spacings */
+  --space-5: 5px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-12: 12px;
+  --space-14: 14px;
+  --space-15: 15px;
+  --space-20: 20px;
+  --space-25: 25px;
+  --space-30: 30px;
+  --space-40: 40px;
+  --space-50: 50px;
+  --space-100: 100px;
+  --space-150: 150px;
+
+  /* Border radius */
+  --radius-full: 9999px;
+  --radius-20: 20px;
+  --radius-25: 25px;
+  --radius-40: 40px;
+
+  /* System */
+  --background: var(--color-white);
+  --foreground: var(--color-white);
 }
 
 @theme inline {
@@ -14,13 +123,150 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: var(--color-white);
+    --foreground: var(--color-black);
   }
+}
+html {
+  filter: saturate(0.8) invert(0);
+}
+html,
+body,
+* {
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar {
+  display: none;
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Inter", sans-serif;
+}
+
+.blue {
+  color: var(--color-blue-primary);
+}
+
+.blue-bg {
+  background: var(--color-blue-primary);
+}
+
+.landingbg {
+  background: var(--gradient-landing);
+}
+
+.gradientbgvariant1 {
+  background: var(--gradient-variant1);
+}
+
+.paymentcard-bg-primary {
+  background: var(--gradient-payment-card-primary);
+}
+
+.paymentcard-bg-secondary {
+  background: var(--gradient-payment-card-secondary);
+}
+
+.gradientbgvariant2 {
+  background: var(--gradient-variant2);
+}
+
+.gradientbgvariant3 {
+  background: var(--gradient-variant3);
+}
+
+.blue-gradient {
+  background: var(--gradient-blue);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.blue-gradient-bg {
+  background: var(--gradient-blue);
+}
+
+.toggle-gradient-bg {
+  background: var(--gradient-toggle);
+}
+
+.whitegradient-bg {
+  background: var(--gradient-white);
+}
+
+.informationsection-bg {
+  background: var(--gradient-info-section);
+}
+
+.payment-bg {
+  background: var(--gradient-payment);
+}
+
+.four-pointed-star {
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.four-pointed-star:before {
+  content: "";
+  position: absolute;
+  width: 1em;
+  height: 1.15em;
+  transform: rotate(-45deg) skewX(22.5deg) skewY(22.5deg);
+  border-radius: 2px;
+}
+
+.four-pointed-star:after {
+  content: "";
+  position: absolute;
+  width: 1em;
+  height: 1.15em;
+  transform: rotate(45deg) skewX(22.5deg) skewY(22.5deg);
+  border-radius: 2px;
+}
+
+.glow-container {
+  filter: drop-shadow(0 0 2px var(--color-light-blue));
+}
+
+body * {
+  --tw-leading: 1;
+  line-height: 1;
+}
+
+/* Quill Editor Customizations */
+.editor-container {
+  height: 100%;
+}
+
+/* Hide duplicate toolbars */
+.editor-container .ql-toolbar {
+  display: none;
+}
+
+/* Make the editor take full height */
+.editor-container .ql-container {
+  border: none;
+  height: 100%;
+}
+
+/* Fix controls display */
+.controls {
+  margin-top: var(--space-10);
+  display: flex;
+  justify-content: space-between;
+}
+
+.state {
+  margin-top: var(--space-10);
+}
+
+.state-title {
+  font-weight: bold;
 }
