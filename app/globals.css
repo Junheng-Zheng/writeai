@@ -142,7 +142,7 @@ html::-webkit-scrollbar {
 }
 
 body {
-  background: var(--background);
+  background: black;
   font-family: "Inter", sans-serif;
 }
 
