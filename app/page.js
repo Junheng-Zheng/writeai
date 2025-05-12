@@ -40,7 +40,7 @@ const Page = () => {
         </div>
       </div> */}
       {/* <Payment /> */}
-      <div className="w-full h-[100vh] px-[28px] flex items-center  updatedbg justify-center">
+      <div className="w-full h-[100vh] px-[28px] flex flex-col items-center justify-center updatedbg ">
         <div className="w-full h-full absolute top-0 left-0">
           <img
             src="/assets/noise.jpeg"
@@ -49,15 +49,20 @@ const Page = () => {
           />
         </div>
         <div className="w-full absolute top-0 left-0 p-[24px] h-fit">
-          <div className="bg-black/30 border-r border-t border-white/20 py-[16px] px-[24px] rounded-[26px] flex w-full justify-between">
+          <div className="bg-black/30 border-r border-t items-center border-white/20 py-[16px] px-[24px] rounded-[26px] flex w-full justify-between">
             <img
               src="/assets/icon.png"
               alt="logo"
-              className="w-[45px] aspect-square object-contain"
+              className="w-[45px] aspect-square object-contain rounded-[12px]"
             />
-            <button className="text-[18px] py-[12px] px-[24px] border border-white text-white rounded-full">
+            {/* <button className="text-[18px] py-[12px] px-[24px] border border-white text-white rounded-full">
               <p>View Demo {"->"}</p>
-            </button>
+            </button> */}
+            <div className="flex w-[24px] flex-col items-center gap-[7px]">
+              <hr className="w-full h-[3px] rounded-full bg-white" />
+              <hr className="w-full h-[3px] rounded-full bg-white" />
+              <hr className="w-full h-[3px] rounded-full bg-white" />
+            </div>
           </div>
         </div>
         <div className="z-20 w-full sm:w-fit gap-[16px] flex flex-col h-fit">
@@ -68,24 +73,21 @@ const Page = () => {
           <h1 className="text-[42px] font-semibold text-white leading-[1.2] tracking-[-1.6%]">
             WRITING + AI
           </h1>
-          <p className="text-[18px] font-medium leading-[1.2] text-white">
+          <p className="text-[18px]  leading-[1.2] text-white">
             Write better, faster, and more efficiently with AI assistance.
           </p>
-          <div className="flex w-full h-fit justify-end items-center gap-[12px]">
+          <div className="flex w-full h-fit justify-end items-center gap-[16px]">
             <button className="p-[12px] pl-[11px] pr-[13px] font-regular bg-white/20  flex items-center justify-center text-black rounded-full">
               <i className="text-white/30 fa-solid fa-play"></i>
             </button>
-            <button className=" py-[12px] px-[24px] font-regular bg-white text-black rounded-full">
+            <button className=" py-[12px] text-[18px] px-[24px]  bg-white text-black rounded-full">
               <p>{"Join Waitlist ->"}</p>
             </button>
           </div>
         </div>
-        <div className="h-fit pl-[24px] overflow-hidden absolute bottom-0 right-0">
-          <img
-            src="/assets/example.png"
-            alt="example"
-            className="w-[500px] h-[275px] rounded-tl-[16px] object-left object-cover"
-          />
+        <div className="absolute text-white bottom-[24px] animate-bounce items-center gap-[4px] flex flex-col">
+          <p className="text-[18px] font-medium">Learn More</p>
+          <i className="text-[18px] fa-solid fa-chevron-down"></i>
         </div>
       </div>
     </>
