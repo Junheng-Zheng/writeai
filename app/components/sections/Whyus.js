@@ -28,10 +28,10 @@ const Whyus = () => {
 
   return (
     <div
-      className="informationsection-bg z-200"
+      className="bg-blue-darkest rounded-t-[24px] z-200"
       style={{ marginBottom: "-300px" }}
     >
-      <div className="flex flex-col gap-[var(--space-20)] p-[0px] -translate-y-[300px] sm:-translate-y-[300px] py-[var(--space-50)] px-[var(--space-12)] sm:px-[var(--space-150)]">
+      <div className="flex flex-col gap-[24px] p-[0px] -translate-y-[300px] sm:-translate-y-[300px] py-[48px] px-[var(--space-12)] sm:px-[var(--space-150)]">
         <div
           style={{
             perspective: isMobile ? "900px" : "800px",
@@ -53,21 +53,21 @@ const Whyus = () => {
         </div>
 
         <Card
-          background="gradientbgvariant1"
+          background="updatedbg"
           header="AI Auto-Completion"
           description="Stuck mid-thought? Let AI finish your sentences with clarity and flow, helping you stay productive and focused."
           image="/assets/example.png"
         />
 
         <Card
-          background="gradientbgvariant2"
+          background="updatedbg"
           header="AI Auto-Completion"
           description="Stuck mid-thought? Let AI finish your sentences with clarity and flow, helping you stay productive and focused."
           image="/assets/example.png"
         />
 
         <Card
-          background="gradientbgvariant3"
+          background="updatedbg"
           header="AI Auto-Completion"
           description="Stuck mid-thought? Let AI finish your sentences with clarity and flow, helping you stay productive and focused."
           image="/assets/example.png"

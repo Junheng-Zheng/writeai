@@ -2,16 +2,18 @@ import React from "react";
 
 const Search = ({ value, onChange, placeholder, className }) => {
   return (
-    <div className="relative border-[1px] border-black/20 rounded-full px-[var(--space-20)] flex py-[var(--space-14)]">
+    <div
+      className={`${className} relative border-[1px] border-black/20 rounded-full w-full bg-black/40 px-[var(--space-20)] flex py-[var(--space-14)]`}
+    >
       <input
         type="text"
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className={`${className} outline-none placeholder:font-[550] w-full placeholder:text-black/30`}
+        className="outline-none w-full text-white placeholder:text-white/30"
       />
       <button className="cursor-pointer">
-        <i className="fa-solid fa-magnifying-glass"></i>
+        <i className="fa-solid text-white/90 fa-magnifying-glass"></i>
       </button>
     </div>
   );
