@@ -99,7 +99,7 @@ const Page = () => {
           <i className="text-[18px] fa-solid fa-chevron-down"></i>
         </div> */}
       </div>
-      <div className="w-full h-fit flex bg-white text-black gap-[16px] sm:translate-y-[-100px] sm:rounded-t-[36px] flex-col p-[24px]">
+      <div className="w-full h-fit flex bg-white text-black gap-[16px] sm:px-[400px] sm:py-[48px] flex-col p-[24px]">
         <h1 className="text-[32px] !leading-[1.1] !tracking-[-1.1px] font-medium text-black">
           <strong>#1 </strong>Platform for all your writing needs.
         </h1>
@@ -129,87 +129,48 @@ const Page = () => {
           </button>
         </motion.div>
       </div>
-      <div className="w-full h-fit flex updated gap-[24px] text-white sm:translate-y-[-100px] sm:rounded-t-[36px] flex-col p-[24px]">
-        <div className="updatedbg relative flex flex-col gap-[12px] text-white text-left p-[24px] border border-white/20 overflow-hidden rounded-[12px]">
-          <div className="w-full h-full absolute top-0 left-0">
-            <div className="w-full z-10 h-full bg-white/0 absolute top-0 left-0"></div>
-            <img
-              src="/assets/noise.jpeg"
-              alt="landingbg"
-              className="absolute top-0 left-0 w-full h-full opacity-10 object-cover"
-            />
-          </div>
-          <div className="flex z-20 items-center gap-[12px]">
-            <img
-              src="/assets/icon.png"
-              alt="logo"
-              className="w-[36px] aspect-square object-contain rounded-[8px]"
-            />
-            <h2 className="text-[24px] !leading-[1.2] !tracking-[20%] font-medium ">
-              AI-Autocomplete
-            </h2>
-          </div>
-          <p className="text-[14px] !leading-[1.2] !tracking-[2%]">
-            Autocomplete your writing. Add source references and stylize with
-            your past work.
-          </p>
+      <div className="updatedbg sm:px-[400px] sm:pt-[48px] relative flex flex-col gap-[16px] text-white text-left p-[24px] pb-0 ">
+        <div className="w-full h-full absolute top-0 left-0">
+          <div className="w-full z-0 h-full bg-white/0 absolute top-0 left-0"></div>
+          <img
+            src="/assets/noise.jpeg"
+            alt="landingbg"
+            className="absolute top-0 left-0 w-full h-full opacity-5 object-cover"
+          />
+        </div>
+        <div className="flex z-20 items-center gap-[12px]">
+          <img
+            src="/assets/icon.png"
+            alt="logo"
+            className="w-[36px] aspect-square object-contain rounded-[8px]"
+          />
+          <h2 className="text-[24px] !leading-[1.2] !tracking-[20%] font-medium ">
+            AI-Autocomplete
+          </h2>
+        </div>
+        <p className="text-[14px] z-20 !leading-[1.2] !tracking-[2%]">
+          Autocomplete your writing. Add source references and stylize with your
+          past work.
+        </p>
+        <div className="flex w-full z-20 justify-end">
           <button className="border border-white/20 w-fit py-[12px] text-[16px] px-[24px] text-white rounded-lg">
             <p>{"Explore Writely ->"}</p>
           </button>
         </div>
-        <div className="updatedbg relative flex flex-col gap-[12px] text-white text-left p-[24px] border border-white/20 overflow-hidden rounded-[12px]">
-          <div className="w-full h-full absolute top-0 left-0">
-            <div className="w-full z-10 h-full bg-white/0 absolute top-0 left-0"></div>
-            <img
-              src="/assets/noise.jpeg"
-              alt="landingbg"
-              className="absolute top-0 left-0 w-full h-full opacity-10 object-cover"
-            />
-          </div>
-          <div className="flex z-20 items-center gap-[12px]">
-            <img
-              src="/assets/icon.png"
-              alt="logo"
-              className="w-[36px] aspect-square object-contain rounded-[8px]"
-            />
-            <h2 className="text-[24px] !leading-[1.2] !tracking-[20%] font-medium ">
-              AI-Autocomplete
-            </h2>
-          </div>
-          <p className="text-[14px] !leading-[1.2] !tracking-[2%]">
-            Autocomplete your writing. Add source references and stylize with
-            your past work.
-          </p>
-          <button className="border border-white/20 w-fit py-[12px] text-[16px] px-[24px] text-white rounded-lg">
-            <p>{"Explore Writely ->"}</p>
+        <div className="z-20 h-fit w-full relative">
+          <img
+            src="/assets/example.png"
+            alt="example"
+            className=" object-cover w-full h-[200px] object-left rounded-[12px]"
+          />
+          <button className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-[12px] pl-[11px] pr-[13px] font-regular bg-black/20 backdrop-blur-sm flex items-center justify-center text-white rounded-full">
+            <i className="text-white fa-solid fa-play"></i>
           </button>
         </div>
-        <div className="updatedbg relative flex flex-col gap-[12px] text-white text-left p-[24px] border border-white/20 overflow-hidden rounded-[12px]">
-          <div className="w-full h-full absolute top-0 left-0">
-            <div className="w-full z-10 h-full bg-white/0 absolute top-0 left-0"></div>
-            <img
-              src="/assets/noise.jpeg"
-              alt="landingbg"
-              className="absolute top-0 left-0 w-full h-full opacity-10 object-cover"
-            />
-          </div>
-          <div className="flex z-20 items-center gap-[12px]">
-            <img
-              src="/assets/icon.png"
-              alt="logo"
-              className="w-[36px] aspect-square object-contain rounded-[8px]"
-            />
-            <h2 className="text-[24px] !leading-[1.2] !tracking-[20%] font-medium ">
-              AI-Autocomplete
-            </h2>
-          </div>
-          <p className="text-[14px] !leading-[1.2] !tracking-[2%]">
-            Autocomplete your writing. Add source references and stylize with
-            your past work.
-          </p>
-          <button className="border border-white/20 w-fit py-[12px] text-[16px] px-[24px] text-white rounded-lg">
-            <p>{"Explore Writely ->"}</p>
-          </button>
+        <div className="z-20 bg-black/40 p-[12px] justify-center rounded-t-[12px] flex items-center gap-[12px]">
+          <i className="text-[8px] text-white fa-solid fa-circle"></i>
+          <i className="text-[8px] text-white/50 fa-solid fa-circle"></i>
+          <i className="text-[8px] text-white/50 fa-solid fa-circle"></i>
         </div>
       </div>
       {/* <Whyus /> */}
