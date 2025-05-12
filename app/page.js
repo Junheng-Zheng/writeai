@@ -4,6 +4,7 @@ import Whyus from "./components/sections/Whyus";
 import Hero from "./components/sections/Hero";
 import Buttonarrow from "./components/ui/Buttonarrow";
 import Navbar from "./components/navigation/Navbar";
+import { motion } from "framer-motion";
 const Page = () => {
   return (
     <>
@@ -49,11 +50,11 @@ const Page = () => {
           />
         </div>
         <div className="w-full absolute top-0 left-0 p-[24px] h-fit">
-          <div className="bg-black/30 border-r border-t items-center border-white/20 py-[16px] px-[24px] rounded-[26px] flex w-full justify-between">
+          <div className="bg-black/20 border-r border-t items-center border-white/20 py-[16px] px-[24px] rounded-[16px] flex w-full justify-between">
             <img
               src="/assets/icon.png"
               alt="logo"
-              className="w-[45px] aspect-square object-contain rounded-[12px]"
+              className="w-[45px] aspect-square object-contain rounded-[8px]"
             />
             {/* <button className="text-[18px] py-[12px] px-[24px] border border-white text-white rounded-full">
               <p>View Demo {"->"}</p>
@@ -66,26 +67,44 @@ const Page = () => {
           </div>
         </div>
         <div className="z-20 w-full sm:w-fit gap-[16px] flex flex-col h-fit">
-          <div className="flex items-center gap-[16px] p-[8px] w-[200px] text-white bg-white/10 rounded-full justify-center">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+            className="flex items-center gap-[16px] p-[8px] w-[180px] text-white rounded-lg bg-black/30 justify-center"
+          >
             <p className="text-[14px]">AI-Autocomplete</p>
-            <i className="fa-solid fa-pencil"></i>
-          </div>
-          <h1 className="text-[42px] font-semibold text-white leading-[1.2] tracking-[-1.6%]">
+            <i className="text-[14px] fa-solid fa-pencil"></i>
+          </motion.div>
+          <motion.h1
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: 0.1 }}
+            className="text-[42px] font-semibold text-white !leading-[1.2] tracking-[-1.6%]"
+          >
             WRITING + AI
-          </h1>
-          <p className="text-[16px] leading-[1.2] text-white">
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: 0.2 }}
+            className="text-[16px] !leading-[1.2] text-white"
+          >
             Autocomplete. Real-time Collaboration. Undetectable - Say goodbye to
             docs.
-          </p>
+          </motion.p>
           <div className="flex w-full h-fit justify-end items-center gap-[16px]">
             {/* <button className="p-[12px] pl-[11px] pr-[13px] font-regular bg-white/20  flex items-center justify-center text-black rounded-full">
               <i className="text-white/30 fa-solid fa-play"></i>
             </button> */}
-            <button className="w-fit h-fit p-[0.5px] border border-white rounded-full">
-              <div className=" py-[12px] text-[16px] px-[24px]  bg-white text-black rounded-full">
-                <p>{"Join Waitlist ->"}</p>
-              </div>
-            </button>
+            <motion.button
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: 0.3 }}
+              className=" py-[12px] text-[16px] px-[24px]  bg-white  text-black rounded-lg"
+            >
+              <p>{"Join Waitlist ->"}</p>
+            </motion.button>
           </div>
         </div>
         {/* <div className="absolute text-white/80 bottom-[24px] animate-bounce items-center gap-[4px] flex flex-col">
