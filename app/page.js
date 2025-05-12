@@ -43,6 +43,7 @@ const Page = () => {
       {/* <Payment /> */}
       <div className="w-full h-[100vh] px-[28px] flex flex-col items-center justify-center updatedbg ">
         <div className="w-full h-full absolute top-0 left-0">
+          <div className="w-full z-10 h-full bg-white/0 absolute top-0 left-0"></div>
           <img
             src="/assets/noise.jpeg"
             alt="landingbg"
