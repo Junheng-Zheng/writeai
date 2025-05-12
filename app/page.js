@@ -40,7 +40,7 @@ const Page = () => {
         </div>
       </div> */}
       {/* <Payment /> */}
-      <div className="w-full h-screen px-[28px] flex items-center  updatedbg justify-center">
+      <div className="w-full h-full px-[28px] flex items-center  updatedbg justify-center">
         <div className="w-full h-full absolute top-0 left-0">
           <img
             src="/assets/noise.jpeg"
