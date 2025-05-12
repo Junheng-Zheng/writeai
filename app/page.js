@@ -100,10 +100,10 @@ const Page = () => {
         </div> */}
       </div>
       <div className="w-full h-fit flex bg-white text-black gap-[16px] sm:px-[400px] sm:py-[48px] flex-col p-[24px]">
-        <h1 className="text-[32px]  font-medium text-black">
+        <h1 className="text-[32px]  font-semibold text-black">
           <strong>#1 </strong>Platform for all your writing needs.
         </h1>
-        <p className="text-[16px] text-right text-black/80">
+        <p className="text-[16px] font-mediumtext-right text-black/80">
           Goodbye Docs & Grammarly. Hello Writely. Add references, stylize with
           AI, and collaborate with others.
         </p>
