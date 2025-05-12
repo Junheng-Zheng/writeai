@@ -100,10 +100,10 @@ const Page = () => {
         </div> */}
       </div>
       <div className="w-full h-fit flex bg-white text-black gap-[16px] sm:px-[400px] sm:py-[48px] flex-col p-[24px]">
-        <h1 className="text-[32px] !leading-[1.1] !tracking-[-1.1px] font-medium text-black">
+        <h1 className="text-[32px]  font-medium text-black">
           <strong>#1 </strong>Platform for all your writing needs.
         </h1>
-        <p className="text-[16px] !leading-[1.2] !tracking-[2%] text-right text-black/80">
+        <p className="text-[16px] text-right text-black/80">
           Goodbye Docs & Grammarly. Hello Writely. Add references, stylize with
           AI, and collaborate with others.
         </p>
@@ -144,11 +144,9 @@ const Page = () => {
             alt="logo"
             className="w-[36px] aspect-square object-contain rounded-[8px]"
           />
-          <h2 className="text-[24px] !leading-[1.2] !tracking-[20%] font-medium ">
-            AI-Autocomplete
-          </h2>
+          <h2 className="text-[24px] font-medium ">AI-Autocomplete</h2>
         </div>
-        <p className="text-[14px] z-20 !leading-[1.2] !tracking-[2%]">
+        <p className="text-[16px] z-20">
           Autocomplete your writing. Add source references and stylize with your
           past work.
         </p>
