@@ -35,9 +35,8 @@
   );
   --gradient-landing: linear-gradient(
     to bottom,
-    var(--color-white),
-    var(--color-blue-lightest),
-    var(--color-blue-light),
+    black,
+    /* var(--color-blue-lightest), */ var(--color-blue-light),
     var(--color-blue-primary),
     var(--color-blue-darkest)
   );
@@ -269,4 +268,14 @@ body * {
 
 .state-title {
   font-weight: bold;
+}
+
+.updatedbg {
+  background: radial-gradient(
+    ellipse at 85% 25%,
+    black 0%,
+    #001749 40%,
+    #003cbe 80%,
+    var(--color-blue-primary) 95%
+  );
 }

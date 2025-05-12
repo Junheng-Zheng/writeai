@@ -3,11 +3,12 @@ import Payment from "./components/sections/Payment";
 import Whyus from "./components/sections/Whyus";
 import Hero from "./components/sections/Hero";
 import Buttonarrow from "./components/ui/Buttonarrow";
+import Navbar from "./components/navigation/Navbar";
 const Page = () => {
   return (
     <>
-      <Hero />
-      <Whyus />
+      {/* <Hero />
+      <Whyus /> */}
       {/* <div className="relative w-full flex flex-col gap-[var(--space-50)] px-[var(--space-150)] py-[var(--space-50)] mb-[-100px] bg-white">
         <img
           src="/assets/noise.jpeg"
@@ -38,7 +39,55 @@ const Page = () => {
           />
         </div>
       </div> */}
-      <Payment />
+      {/* <Payment /> */}
+      <div className="w-full h-screen px-[28px] flex items-center  updatedbg justify-center">
+        <div className="w-full h-full absolute top-0 left-0">
+          <img
+            src="/assets/noise.jpeg"
+            alt="landingbg"
+            className="absolute top-0 left-0 w-full h-full opacity-3 object-cover"
+          />
+        </div>
+        <div className="w-full absolute top-0 left-0 p-[24px] h-fit">
+          <div className="bg-black/30 border-r border-t border-white/20 py-[16px] px-[24px] rounded-[26px] flex w-full justify-between">
+            <img
+              src="/assets/icon.png"
+              alt="logo"
+              className="w-[45px] aspect-square object-contain"
+            />
+            <button className="text-[18px] py-[12px] px-[24px] border border-white text-white rounded-full">
+              <p>View Demo {"->"}</p>
+            </button>
+          </div>
+        </div>
+        <div className="z-20 w-full sm:w-fit gap-[16px] flex flex-col h-fit">
+          <div className="flex items-center gap-[16px] p-[8px] w-[200px] text-white bg-white/10 rounded-full justify-center">
+            <p className="text-[14px]">AI-Autocomplete</p>
+            <i className="fa-solid fa-pencil"></i>
+          </div>
+          <h1 className="text-[42px] font-semibold text-white leading-[1.2] tracking-[-1.6%]">
+            WRITING + AI
+          </h1>
+          <p className="text-[18px] font-medium leading-[1.2] text-white">
+            Write better, faster, and more efficiently with AI assistance.
+          </p>
+          <div className="flex w-full h-fit justify-end items-center gap-[12px]">
+            <button className="p-[12px] pl-[11px] pr-[13px] font-regular bg-white/20  flex items-center justify-center text-black rounded-full">
+              <i className="text-white/30 fa-solid fa-play"></i>
+            </button>
+            <button className=" py-[12px] px-[24px] font-regular bg-white text-black rounded-full">
+              <p>{"Join Waitlist ->"}</p>
+            </button>
+          </div>
+        </div>
+        <div className="h-fit pl-[24px] overflow-hidden absolute bottom-0 right-0">
+          <img
+            src="/assets/example.png"
+            alt="example"
+            className="w-[500px] h-[275px] rounded-tl-[16px] object-left object-cover"
+          />
+        </div>
+      </div>
     </>
   );
 };
