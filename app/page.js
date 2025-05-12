@@ -1,12 +1,15 @@
 "use client";
-import Payment from "./components/sections/Payment";
-import Whyus from "./components/sections/Whyus";
-import Hero from "./components/sections/Hero";
-import Buttonarrow from "./components/ui/Buttonarrow";
-import Navbar from "./components/navigation/Navbar";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Search from "./components/ui/Search";
+import { useRef } from "react";
 const Page = () => {
+  const imgRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: imgRef,
+    offset: ["start end", "end start"],
+  });
+
+  const imgRotateX = useTransform(scrollYProgress, [0, 0.6], [15, 0]);
   return (
     <>
       <div className="w-full h-[100vh] px-[28px] flex flex-col items-center justify-center updatedbg ">
@@ -98,16 +101,40 @@ const Page = () => {
           <p className="text-[18px]">Learn More</p>
           <i className="text-[18px] fa-solid fa-chevron-down"></i>
         </div> */}
+        <div className="w-full h-fit translate-y-1/2 absolute bottom-0 left-0 hidden sm:flex justify-center">
+          <div
+            style={{
+              perspective: 900,
+            }}
+            className="w-[80%] glow-container overflow-hidden rounded-t-[var(--radius-20)] sm:rounded-t-none"
+          >
+            <motion.img
+              ref={imgRef}
+              src="/assets/example.png"
+              alt="example"
+              className="rounded-[var(--radius-20)] h-[300px] object-top-left object-cover sm:h-auto sm:mx-auto sm:scale-100"
+              style={{
+                rotateX: imgRotateX,
+                position: "relative",
+                transformStyle: "preserve-3d",
+                transformOrigin: "center bottom",
+              }}
+            />
+          </div>
+        </div>
       </div>
-      <div className="w-full h-fit flex bg-white text-black gap-[16px] sm:px-[400px] sm:py-[48px] flex-col p-[24px]">
+      {/* <div className="w-full h-fit flex bg-gray-300 text-black gap-[16px] sm:px-[400px] sm:py-[48px] flex-col p-[24px]">
         <h1 className="text-[32px]  font-semibold text-black">
-          <strong>#1 </strong>Platform for all your writing needs.
+          Platform for all your writing needs.
         </h1>
         <p className="text-[16px] font-mediumtext-right text-black/80">
           Goodbye Docs & Grammarly. Hello Writely. Add references, stylize with
           AI, and collaborate with others.
         </p>
-
+        <button className="border border-black/20 w-fit py-[12px] text-[16px] px-[24px] text-black rounded-lg">
+          <p>View Demo {"->"}</p>
+        </button>
+        
         <motion.div
           initial={{ y: 50 }}
           whileInView={{
@@ -128,8 +155,8 @@ const Page = () => {
             <i className="text-white fa-solid fa-play"></i>
           </button>
         </motion.div>
-      </div>
-      <div className="updatedbg sm:px-[400px] sm:pt-[48px] relative flex flex-col gap-[16px] text-white text-left p-[24px] pb-0 ">
+      </div> */}
+      <div className="updatedbg sm:px-[400px] sm:pt-[48px] relative flex flex-col gap-[24px] text-white text-left p-[24px] pb-0 ">
         <div className="w-full h-full absolute top-0 left-0">
           <div className="w-full z-0 h-full bg-white/0 absolute top-0 left-0"></div>
           <img
