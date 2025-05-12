@@ -88,8 +88,8 @@ const Page = () => {
             </button>
           </div>
         </div>
-        <div className="absolute text-white bottom-[24px] animate-bounce items-center gap-[4px] flex flex-col">
-          <p className="text-[18px] font-medium">Learn More</p>
+        <div className="absolute text-white/80 bottom-[24px] animate-bounce items-center gap-[4px] flex flex-col">
+          <p className="text-[18px]">Learn More</p>
           <i className="text-[18px] fa-solid fa-chevron-down"></i>
         </div>
       </div>
