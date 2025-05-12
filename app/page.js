@@ -70,10 +70,10 @@ const Page = () => {
             <p className="text-[14px]">AI-Autocomplete</p>
             <i className="fa-solid fa-pencil"></i>
           </div>
-          <h1 className="text-[42px] font-semibold text-white leading-[1.2] tracking-[-1.6%]">
+          <h1 className="text-[32px] font-semibold text-white leading-[1.2] tracking-[-1.6%]">
             WRITING + AI
           </h1>
-          <p className="text-[18px] leading-[1.2] text-white">
+          <p className="text-[16px] leading-[1.2] text-white">
             Autocomplete. Real-time Collaboration. Undetectable - Say goodbye to
             docs.
           </p>
@@ -82,7 +82,7 @@ const Page = () => {
               <i className="text-white/30 fa-solid fa-play"></i>
             </button> */}
             <button className="w-fit h-fit p-[0.5px] border border-white rounded-full">
-              <div className=" py-[12px] text-[18px] px-[24px]  bg-white text-black rounded-full">
+              <div className=" py-[12px] text-[16px] px-[24px]  bg-white text-black rounded-full">
                 <p>{"Join Waitlist ->"}</p>
               </div>
             </button>
