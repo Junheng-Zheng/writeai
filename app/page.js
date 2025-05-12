@@ -70,7 +70,7 @@ const Page = () => {
             <p className="text-[14px]">AI-Autocomplete</p>
             <i className="fa-solid fa-pencil"></i>
           </div>
-          <h1 className="text-[32px] font-semibold text-white leading-[1.2] tracking-[-1.6%]">
+          <h1 className="text-[42px] font-semibold text-white leading-[1.2] tracking-[-1.6%]">
             WRITING + AI
           </h1>
           <p className="text-[16px] leading-[1.2] text-white">
@@ -88,10 +88,10 @@ const Page = () => {
             </button>
           </div>
         </div>
-        <div className="absolute text-white/80 bottom-[24px] animate-bounce items-center gap-[4px] flex flex-col">
+        {/* <div className="absolute text-white/80 bottom-[24px] animate-bounce items-center gap-[4px] flex flex-col">
           <p className="text-[18px]">Learn More</p>
           <i className="text-[18px] fa-solid fa-chevron-down"></i>
-        </div>
+        </div> */}
       </div>
     </>
   );
