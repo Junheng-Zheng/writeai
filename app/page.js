@@ -99,7 +99,7 @@ const Page = () => {
           <i className="text-[18px] fa-solid fa-chevron-down"></i>
         </div> */}
       </div>
-      <div className="w-full h-fit flex bg-white text-black gap-[12px] sm:translate-y-[-100px] sm:rounded-t-[36px] flex-col p-[24px]">
+      <div className="w-full h-fit flex bg-white text-black gap-[16px] sm:translate-y-[-100px] sm:rounded-t-[36px] flex-col p-[24px]">
         <h1 className="text-[32px] !leading-[1.1] !tracking-[-1.1px] font-medium text-black">
           <strong>#1 </strong>Platform for all your writing needs.
         </h1>
