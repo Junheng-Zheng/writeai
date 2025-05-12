@@ -73,15 +73,18 @@ const Page = () => {
           <h1 className="text-[42px] font-semibold text-white leading-[1.2] tracking-[-1.6%]">
             WRITING + AI
           </h1>
-          <p className="text-[18px]  leading-[1.2] text-white">
-            Write better, faster, and more efficiently with AI assistance.
+          <p className="text-[18px] leading-[1.2] text-white">
+            Autocomplete. Real-time Collaboration. Undetectable - Say goodbye to
+            docs.
           </p>
           <div className="flex w-full h-fit justify-end items-center gap-[16px]">
-            <button className="p-[12px] pl-[11px] pr-[13px] font-regular bg-white/20  flex items-center justify-center text-black rounded-full">
+            {/* <button className="p-[12px] pl-[11px] pr-[13px] font-regular bg-white/20  flex items-center justify-center text-black rounded-full">
               <i className="text-white/30 fa-solid fa-play"></i>
-            </button>
-            <button className=" py-[12px] text-[18px] px-[24px]  bg-white text-black rounded-full">
-              <p>{"Join Waitlist ->"}</p>
+            </button> */}
+            <button className="w-fit h-fit p-[0.5px] border border-white rounded-full">
+              <div className=" py-[12px] text-[18px] px-[24px]  bg-white text-black rounded-full">
+                <p>{"Join Waitlist ->"}</p>
+              </div>
             </button>
           </div>
         </div>
