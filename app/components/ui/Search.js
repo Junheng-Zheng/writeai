@@ -10,7 +10,7 @@ const Search = ({ value, onChange, placeholder, className }) => {
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className="outline-none w-full text-white placeholder:text-white/30"
+        className="outline-none w-full text-white bg-transparent placeholder:text-white/30"
       />
       <button className="cursor-pointer">
         <i className="fa-solid text-white/90 fa-magnifying-glass"></i>
