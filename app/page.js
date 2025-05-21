@@ -2,6 +2,8 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import Search from "./components/ui/Search";
 import { useRef } from "react";
+import Payment from "./components/sections/Payment";
+import Tiltcard from "./components/Tiltcard";
 const Page = () => {
   const imgRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -9,7 +11,7 @@ const Page = () => {
     offset: ["start end", "end start"],
   });
 
-  const imgRotateX = useTransform(scrollYProgress, [0, 0.6], [15, 0]);
+  const imgRotateX = useTransform(scrollYProgress, [0, 0.5], [15, 0]);
   return (
     <>
       <div className="w-full h-[100vh] px-[28px] flex flex-col items-center justify-center updatedbg ">
@@ -101,7 +103,7 @@ const Page = () => {
           <p className="text-[18px]">Learn More</p>
           <i className="text-[18px] fa-solid fa-chevron-down"></i>
         </div> */}
-        <div className="w-full h-fit translate-y-1/2 absolute bottom-0 left-0 hidden sm:flex justify-center">
+        {/* <div className="w-full h-fit translate-y-1/2 absolute bottom-0 left-0 hidden sm:flex justify-center">
           <div
             style={{
               perspective: 900,
@@ -121,7 +123,7 @@ const Page = () => {
               }}
             />
           </div>
-        </div>
+        </div> */}
       </div>
       {/* <div className="w-full h-fit flex bg-gray-300 text-black gap-[16px] sm:px-[400px] sm:py-[48px] flex-col p-[24px]">
         <h1 className="text-[32px]  font-semibold text-black">
@@ -156,48 +158,100 @@ const Page = () => {
           </button>
         </motion.div>
       </div> */}
-      <div className="updatedbg sm:px-[400px] sm:pt-[48px] relative flex flex-col gap-[24px] text-white text-left p-[24px] pb-0 ">
-        <div className="w-full h-full absolute top-0 left-0">
-          <div className="w-full z-0 h-full bg-white/0 absolute top-0 left-0"></div>
-          <img
-            src="/assets/noise.jpeg"
-            alt="landingbg"
-            className="absolute top-0 left-0 w-full h-full opacity-5 object-cover"
-          />
-        </div>
-        <div className="flex z-20 items-center gap-[12px]">
-          <img
-            src="/assets/icon.png"
-            alt="logo"
-            className="w-[36px] aspect-square object-contain rounded-[8px]"
-          />
-          <h2 className="text-[24px] font-medium ">AI-Autocomplete</h2>
-        </div>
-        <p className="text-[16px] z-20">
-          Autocomplete your writing. Add source references and stylize with your
-          past work.
-        </p>
-        <div className="flex w-full z-20 justify-end">
-          <button className="border border-white/20 w-fit py-[12px] text-[16px] px-[24px] text-white rounded-lg">
-            <p>{"Explore Writely ->"}</p>
-          </button>
+      <div className="updatedbg sm:px-[120px] py-[96px]  relative flex sm:flex-row flex-col gap-[24px] sm:gap-[48px] text-white text-left justify-end sm:items-center ">
+        <div className="flex flex-col gap-[16px]">
+          <div className="flex z-20 text-white items-center gap-[12px]">
+            <img
+              src="/assets/icon.png"
+              alt="logo"
+              className="w-[36px] aspect-square object-contain rounded-[4px]"
+            />
+            <h2 className="text-[32px] font-bold text-white">
+              AI-Autocomplete
+            </h2>
+          </div>
+          <p className="text-[18px] z-20 text-white">
+            Autocomplete your writing. Add source references and stylize with
+            your past work.
+          </p>
+          <div className="flex w-full z-20 justify-start">
+            <button className="sm:flex hidden py-[12px] text-[16px] px-[24px]  bg-black/30 text-white border border-white/10 rounded-lg">
+              <p>{"Explore Writely ->"}</p>
+            </button>
+          </div>
         </div>
         <div className="z-20 h-fit w-full relative">
           <img
             src="/assets/example.png"
             alt="example"
-            className=" object-cover w-full h-[200px] object-left rounded-[12px]"
+            className="object-cover w-full h-[300px] sm:h-[350px] object-top-left rounded-[12px]"
           />
           <button className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-[12px] pl-[11px] pr-[13px] font-regular bg-black/20 backdrop-blur-sm flex items-center justify-center text-white rounded-full">
             <i className="text-white fa-solid fa-play"></i>
           </button>
         </div>
-        <div className="z-20 bg-black/40 p-[12px] justify-center rounded-t-[12px] flex items-center gap-[12px]">
-          <i className="text-[8px] text-white fa-solid fa-circle"></i>
-          <i className="text-[8px] text-white/50 fa-solid fa-circle"></i>
-          <i className="text-[8px] text-white/50 fa-solid fa-circle"></i>
+      </div>
+      <div className="w-full updatedbg flex flex-col px-[120px] py-[96px] border-t border-black/10  gap-[54px]">
+        <div className="flex justify-between items-center  text-white">
+          <div className="flex z-20 text-white w-full items-center gap-[12px]">
+            <img
+              src="/assets/icon.png"
+              alt="logo"
+              className="w-[36px] aspect-square object-contain rounded-[4px]"
+            />
+            <h2 className="text-[32px] font-bold text-white">
+              Writely&apos;s Features
+            </h2>
+          </div>
+          <p className="text-[18px] text-right">
+            Truly enhance your writing with AI. Many of these features with more
+            Coming soon
+          </p>
+        </div>
+        <div className="w-full h-fit grid  border-black/10 grid-cols-4  gap-[24px]">
+          <Tiltcard
+            tagName={"AI"}
+            title={"AI-Autocomplete"}
+            description={
+              "You write, AI finish, AI autocomplete, only on writely"
+            }
+            buttonText={"Explore Writely ->"}
+            icon={<i className="text-[21px] fa-solid fa-pencil"></i>}
+            tagColor={"text-purple-500"}
+            tagBgColor={"bg-purple-500/30"}
+          />
+          <Tiltcard
+            tagName={"Collaboration"}
+            title={"Work with others"}
+            description={
+              "Collaborate with others in real-time, only on writely"
+            }
+            buttonText={"Explore Writely ->"}
+            icon={<i className="text-[21px] fa-solid fa-users"></i>}
+            tagColor={"text-blue-500"}
+            tagBgColor={"bg-blue-500/30"}
+          />
+          <Tiltcard
+            tagName={"Reference"}
+            title={"Add References"}
+            description={"Add references to your writing, only on writely"}
+            buttonText={"Explore Writely ->"}
+            icon={<i className="text-[21px] fa-solid fa-quote-left"></i>}
+            tagColor={"text-green-500"}
+            tagBgColor={"bg-green-500/30"}
+          />
+          <Tiltcard
+            tagName={"Past Work"}
+            title={"Add past work"}
+            description={"Add past work to your writing, only on writely"}
+            buttonText={"Explore Writely ->"}
+            icon={<i className="text-[21px] fa-solid fa-file-lines"></i>}
+            tagColor={"text-yellow-500"}
+            tagBgColor={"bg-yellow-500/30"}
+          />
         </div>
       </div>
+      {/* <Payment /> */}
       {/* <Whyus /> */}
       {/* <Payment /> */}
     </>
