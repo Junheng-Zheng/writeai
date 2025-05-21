@@ -64,7 +64,7 @@ const Page = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: 0.1 }}
-            className="text-[42px] font-semibold text-white !leading-[1.2] tracking-[-1.2px]"
+            className=" text-[42px] font-semibold text-white !leading-[1.2] tracking-[-1.2px]"
           >
             WRITING + AI
           </motion.h1>
@@ -158,7 +158,7 @@ const Page = () => {
           </button>
         </motion.div>
       </div> */}
-      <div className="updatedbg sm:px-[120px] py-[96px]  relative flex sm:flex-row flex-col gap-[24px] sm:gap-[48px] text-white text-left justify-end sm:items-center ">
+      <div className="bg-gray-900 sm:px-[120px] py-[96px]  relative flex sm:flex-row flex-col gap-[24px] sm:gap-[48px] text-white text-left justify-end sm:items-center ">
         <div className="flex flex-col gap-[16px]">
           <div className="flex z-20 text-white items-center gap-[12px]">
             <img
@@ -191,7 +191,7 @@ const Page = () => {
           </button>
         </div>
       </div>
-      <div className="w-full updatedbg flex flex-col px-[120px] py-[96px] border-t border-black/10  gap-[54px]">
+      <div className="w-full updatedbg flex flex-col p-[120px] border-t border-black/10  gap-[54px]">
         <div className="flex justify-between items-center  text-white">
           <div className="flex z-20 text-white w-full items-center gap-[12px]">
             <img
