@@ -17,7 +17,7 @@ export async function POST(req) {
 
   try {
     const response = await fetch(
-      'https://us-east-2wosz12rja.auth.us-east-2.amazoncognito.com/oauth2/token',
+      'https://us-east-2Wosz12rjA.auth.us-east-2.amazoncognito.com/oauth2/token',
       {
         method: 'POST',
         headers: {
@@ -35,10 +35,16 @@ export async function POST(req) {
     }
 
     const headers = new Headers();
-    headers.append('Set-Cookie', `id_token=${data.id_token}; HttpOnly; Path=/; Secure; SameSite=Lax`);
-    headers.append('Set-Cookie', `access_token=${data.access_token}; HttpOnly; Path=/; Secure; SameSite=Lax`);
+    headers.append(
+    'Set-Cookie',
+    `id_token=${data.id_token}; HttpOnly; Path=/; Secure; SameSite=Lax; Max-Age=3600`
+    );
+    headers.append(
+    'Set-Cookie',
+    `access_token=${data.access_token}; HttpOnly; Path=/; Secure; SameSite=Lax; Max-Age=3600`
+    );
     
-    return new Response(JSON.stringify(data), { status: 200 });
+    return new Response(JSON.stringify(data), { status: 200, headers});
   } catch (err) {
     return new Response(JSON.stringify({ error: 'Internal Server Error' }), { status: 500 });
   }

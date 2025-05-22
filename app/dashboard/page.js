@@ -8,48 +8,51 @@ export default function DashboardPage() {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const code = params.get('code');
-    if (!code) {
-      setError('No authorization code found in URL');
-      return;
-    }
 
     async function fetchTokensAndUser() {
-      try {
-        // Step 1: Exchange code for tokens, cookies set here
-        const tokenRes = await fetch('/api/auth/token', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ code }),
-          credentials: 'include', // important to receive cookies!
-        });
+        try {
+        // Step 1: Try to exchange the code if it's in the URL
+        if (code) {
+            const tokenRes = await fetch('/api/auth/token', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ code }),
+            credentials: 'include',
+            });
 
-        if (!tokenRes.ok) {
-          const errData = await tokenRes.json();
-          setError(errData.error?.message || 'Failed to fetch tokens');
-          return;
+            if (tokenRes.ok) {
+            // Clean up the URL so the code is not reused
+            const newUrl = new URL(window.location.href);
+            newUrl.searchParams.delete('code');
+            window.history.replaceState({}, '', newUrl);
+            } else {
+            console.warn('Token exchange failed, falling back to cookie.');
+            }
         }
 
-        // Step 2: Call /api/auth/me to get user info
+        // Step 2: Always try to load from cookie
         const meRes = await fetch('/api/auth/me', {
-          method: 'GET',
-          credentials: 'include', // send cookies automatically
+            method: 'GET',
+            credentials: 'include',
         });
 
         if (!meRes.ok) {
-          const errData = await meRes.json();
-          setError(errData.error || 'Failed to fetch user info');
-          return;
+            const errData = await meRes.json();
+            setError(errData.error || 'Failed to fetch user info');
+            return;
         }
 
         const userInfo = await meRes.json();
         setUser(userInfo);
-      } catch (err) {
+        } catch (err) {
         setError('Network error');
-      }
+        }
     }
 
     fetchTokensAndUser();
-  }, []);
+    }, []);
+
+
 
   if (error) {
     return <p style={{ color: 'red' }}>Error: {error}</p>;
