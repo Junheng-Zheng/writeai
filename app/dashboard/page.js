@@ -1,15 +1,5 @@
 'use client';
-
 import { useEffect, useState } from 'react';
-
-// Simple JWT decoder (just base64 decode the payload)
-function parseJwt(token) {
-  try {
-    return JSON.parse(atob(token.split('.')[1]));
-  } catch {
-    return null;
-  }
-}
 
 export default function DashboardPage() {
   const [user, setUser] = useState(null);
@@ -23,35 +13,42 @@ export default function DashboardPage() {
       return;
     }
 
-    async function fetchTokens() {
+    async function fetchTokensAndUser() {
       try {
-        const res = await fetch('/api/auth/token', {
+        // Step 1: Exchange code for tokens, cookies set here
+        const tokenRes = await fetch('/api/auth/token', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ code }),
-          credentials: 'include',
+          credentials: 'include', // important to receive cookies!
         });
 
-        if (!res.ok) {
-          const errData = await res.json();
+        if (!tokenRes.ok) {
+          const errData = await tokenRes.json();
           setError(errData.error?.message || 'Failed to fetch tokens');
           return;
         }
 
-        const data = await res.json();
-        const userInfo = parseJwt(data.id_token);
-        if (!userInfo) {
-          setError('Failed to decode user info');
+        // Step 2: Call /api/auth/me to get user info
+        const meRes = await fetch('/api/auth/me', {
+          method: 'GET',
+          credentials: 'include', // send cookies automatically
+        });
+
+        if (!meRes.ok) {
+          const errData = await meRes.json();
+          setError(errData.error || 'Failed to fetch user info');
           return;
         }
 
+        const userInfo = await meRes.json();
         setUser(userInfo);
       } catch (err) {
         setError('Network error');
       }
     }
 
-    fetchTokens();
+    fetchTokensAndUser();
   }, []);
 
   if (error) {
@@ -67,7 +64,6 @@ export default function DashboardPage() {
       <h1>Welcome, {user.name || user.email || user['cognito:username']}</h1>
       <p>Email: {user.email}</p>
       <p>Username: {user['cognito:username']}</p>
-      {/* Display more user attributes if needed */}
     </div>
   );
 }
