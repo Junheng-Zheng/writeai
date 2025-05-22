@@ -34,6 +34,10 @@ export async function POST(req) {
       return new Response(JSON.stringify({ error: data }), { status: response.status });
     }
 
+    const headers = new Headers();
+    headers.append('Set-Cookoie', `id_token=${data.id_token}; HttpOnly; Path=/; Secure; SameSite=Lax`);
+    headers.append('Set-Cookie', `access_token=${data.access_token}; HttpOnly; Path=/; Secure; SameSite=Lax`);
+    
     return new Response(JSON.stringify(data), { status: 200 });
   } catch (err) {
     return new Response(JSON.stringify({ error: 'Internal Server Error' }), { status: 500 });
