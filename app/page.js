@@ -4,25 +4,19 @@ import Search from "./components/ui/Search";
 import { useRef } from "react";
 import Payment from "./components/sections/Payment";
 import Tiltcard from "./components/Tiltcard";
+import Button from "./components/designsystem/button";
 const Page = () => {
-  const imgRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: imgRef,
-    offset: ["start end", "end start"],
-  });
-
-  const imgRotateX = useTransform(scrollYProgress, [0, 0.5], [15, 0]);
   return (
     <>
       <div className="w-full h-[100vh] px-[28px] flex flex-col items-center justify-center updatedbg ">
         {/* <div className="w-full h-full absolute top-0 left-0">
-          <div className="w-full z-10 h-full bg-white/0 absolute top-0 left-0"></div>
-          <img
-            src="/assets/noise.jpeg"
-            alt="landingbg"
-            className="absolute top-0 left-0 w-full h-full opacity-3 object-cover"
-          />
-        </div> */}
+            <div className="w-full z-10 h-full bg-white/0 absolute top-0 left-0"></div>
+            <img
+              src="/assets/noise.jpeg"
+              alt="landingbg"
+              className="absolute top-0 left-0 w-full h-full opacity-3 object-cover"
+            />
+          </div> */}
         <div className="z-20 w-full absolute top-0 left-0 p-[24px] h-fit">
           <div className="bg-black/20 border-r border-t items-center border-white/20 py-[16px] px-[24px] rounded-[16px] flex w-full justify-between">
             <div className="w-full">
@@ -39,9 +33,9 @@ const Page = () => {
             <div className="sm:flex hidden text-white items-center w-full gap-[24px] justify-end">
               <p>About</p>
               <p>Contact</p>
-              <button className="py-[12px] text-[16px] px-[24px] glow-container text-white border border-white/30 rounded-lg">
+              <Button variant="secondary">
                 <p>View Demo</p>
-              </button>
+              </Button>
             </div>
             <div className="flex w-[24px] sm:hidden flex-col items-center gap-[7px]">
               <hr className="w-full h-[3px] rounded-full bg-white" />
@@ -81,22 +75,24 @@ const Page = () => {
             {/* <button className="p-[12px] pl-[11px] pr-[13px] font-regular bg-white/20  flex items-center justify-center text-black rounded-full">
               <i className="text-white/30 fa-solid fa-play"></i>
             </button> */}
-            <motion.button
+            <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.3 }}
-              className="sm:flex hidden py-[12px] text-[16px] px-[24px]  bg-black/30 text-white border border-white/10 rounded-lg"
             >
-              <p>{"View Demo"}</p>
-            </motion.button>
-            <motion.button
+              <Button variant="secondary">
+                <p>{"View Demo"}</p>
+              </Button>
+            </motion.div>
+            <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.3 }}
-              className="glow-container py-[12px] text-[16px] px-[24px]  bg-white  text-black rounded-lg"
             >
-              <p>{"Join Waitlist ->"}</p>
-            </motion.button>
+              <Button variant="primary">
+                <p>{"Join Waitlist ->"}</p>
+              </Button>
+            </motion.div>
           </div>
         </div>
         {/* <div className="absolute text-white/80 bottom-[24px] animate-bounce items-center gap-[4px] flex flex-col">
@@ -175,9 +171,9 @@ const Page = () => {
             your past work.
           </p>
           <div className="flex w-full z-20 justify-start">
-            <button className="sm:flex hidden py-[12px] text-[16px] px-[24px]  bg-black/30 text-white border border-white/10 rounded-lg">
+            <Button variant="primary">
               <p>{"Explore Writely ->"}</p>
-            </button>
+            </Button>
           </div>
         </div>
         <div className="z-20 h-fit w-full relative">
