@@ -1,6 +1,7 @@
 "use client";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Search from "./components/ui/Search";
+import Link from "next/link";
 import { useRef } from "react";
 import Payment from "./components/sections/Payment";
 import Tiltcard from "./components/Tiltcard";
@@ -33,9 +34,11 @@ const Page = () => {
             <div className="sm:flex hidden text-white items-center w-full gap-[24px] justify-end">
               <p>About</p>
               <p>Contact</p>
-              <Button variant="secondary">
-                <p>View Demo</p>
-              </Button>
+              <Link href="https://us-east-2wosz12rja.auth.us-east-2.amazoncognito.com/login/continue?client_id=7vb6ksijcjvgve65fs0htb9ao4&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fdashboard&response_type=code&scope=email+openid+phone">
+                <Button variant="secondary">
+                  <p>Login</p>
+                </Button>
+              </Link>
             </div>
             <div className="flex w-[24px] sm:hidden flex-col items-center gap-[7px]">
               <hr className="w-full h-[3px] rounded-full bg-white" />
