@@ -34,7 +34,7 @@ const Page = () => {
             <div className="sm:flex hidden text-white items-center w-full gap-[24px] justify-end">
               <p>About</p>
               <p>Contact</p>
-              <Link href="https://us-east-2wosz12rja.auth.us-east-2.amazoncognito.com/login/continue?client_id=7vb6ksijcjvgve65fs0htb9ao4&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fdashboard&response_type=code&scope=email+openid+phone">
+              <Link href="https://us-east-2wosz12rja.auth.us-east-2.amazoncognito.com/login/continue?client_id=7vb6ksijcjvgve65fs0htb9ao4&redirect_uri=https%3A%2F%2Fwriteai-five.vercel.app%2Fdashboard&response_type=code&scope=email+openid+phone">
                 <Button variant="secondary">
                   <p>Login</p>
                 </Button>
