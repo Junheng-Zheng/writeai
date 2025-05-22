@@ -35,7 +35,7 @@ export async function POST(req) {
     }
 
     const headers = new Headers();
-    headers.append('Set-Cookoie', `id_token=${data.id_token}; HttpOnly; Path=/; Secure; SameSite=Lax`);
+    headers.append('Set-Cookie', `id_token=${data.id_token}; HttpOnly; Path=/; Secure; SameSite=Lax`);
     headers.append('Set-Cookie', `access_token=${data.access_token}; HttpOnly; Path=/; Secure; SameSite=Lax`);
     
     return new Response(JSON.stringify(data), { status: 200 });
