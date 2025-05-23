@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Satoshi";
+  src: url("/assets/Satoshi-Variable.ttf") format("truetype");
+  font-weight: 300 900;
+  font-display: swap;
+}
+
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 :root {
@@ -283,10 +290,33 @@ body * {
     radial-gradient(
       ellipse at 85% 25%,
       black 0%,
-      #001749 40%,
-      #003cbe 80%,
-      var(--color-blue-primary) 95%
+      #001033 40%,
+      #002a8c 80%,
+      #0040cc 95%
     );
   background-size: 20px 20px, 20px 20px, cover;
   background-repeat: repeat, repeat, no-repeat;
+}
+
+.rainbow-radial {
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 41, 204, 0.2) 0%,
+    rgba(0, 30, 153, 0.2) 25%,
+    rgba(153, 0, 204, 0.2) 75%,
+    rgba(64, 0, 255, 0.518) 100%
+  );
+  background-size: 400% 400%;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }

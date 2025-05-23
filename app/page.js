@@ -6,157 +6,75 @@ import { useRef } from "react";
 import Payment from "./components/sections/Payment";
 import Tiltcard from "./components/Tiltcard";
 import Button from "./components/designsystem/button";
+import FloatingHeader from "./components/designsystem/floatingHeader";
 const Page = () => {
   return (
     <>
-      <div className="w-full h-[100vh] px-[28px] flex flex-col items-center justify-center updatedbg ">
-        {/* <div className="w-full h-full absolute top-0 left-0">
-            <div className="w-full z-10 h-full bg-white/0 absolute top-0 left-0"></div>
-            <img
-              src="/assets/noise.jpeg"
-              alt="landingbg"
-              className="absolute top-0 left-0 w-full h-full opacity-3 object-cover"
-            />
-          </div> */}
-        <div className="z-20 w-full absolute top-0 left-0 p-[24px] h-fit">
-          <div className="bg-black/20 border-r border-t items-center border-white/20 py-[16px] px-[24px] rounded-[16px] flex w-full justify-between">
-            <div className="w-full">
-              <img
-                src="/assets/icon.png"
-                alt="logo"
-                className="w-[45px] aspect-square object-contain rounded-[8px]"
-              />
-            </div>
-            {/* <button className="text-[18px] py-[12px] px-[24px] border border-white text-white rounded-full">
-              <p>View Demo {"->"}</p>
-            </button> */}
-            <Search placeholder={"Search"} className="sm:flex hidden" />
-            <div className="sm:flex hidden text-white items-center w-full gap-[24px] justify-end">
-              <p>About</p>
-              <p>Contact</p>
-              <Link href="https://us-east-2wosz12rja.auth.us-east-2.amazoncognito.com/login/continue?client_id=7vb6ksijcjvgve65fs0htb9ao4&redirect_uri=https%3A%2F%2Fwriteai-five.vercel.app%2Fdashboard&response_type=code&scope=email+openid+phone">
-                <Button variant="secondary">
-                  <p>Login</p>
-                </Button>
-              </Link>
-            </div>
-            <div className="flex w-[24px] sm:hidden flex-col items-center gap-[7px]">
-              <hr className="w-full h-[3px] rounded-full bg-white" />
-              <hr className="w-full h-[3px] rounded-full bg-white" />
-              <hr className="w-full h-[3px] rounded-full bg-white" />
-            </div>
-          </div>
-        </div>
-        <div className="z-20 w-full sm:w-fit gap-[16px] flex flex-col h-fit">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
-            className="flex items-center gap-[16px] p-[8px] w-[180px] text-white rounded-lg bg-black/30 justify-center"
-          >
-            <p className="text-[14px]">AI-Autocomplete</p>
-            <i className="text-[14px] fa-solid fa-pencil"></i>
-          </motion.div>
-          <motion.h1
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: 0.1 }}
-            className=" text-[42px] font-semibold text-white !leading-[1.2] tracking-[-1.2px]"
-          >
-            WRITING + AI
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: 0.2 }}
-            className="text-[16px] !leading-[1.2] text-white"
-          >
-            Autocomplete. Real-time Collaboration. Undetectable - Say goodbye to
-            docs.
-          </motion.p>
-          <div className="flex w-full h-fit justify-end items-center gap-[16px]">
-            {/* <button className="p-[12px] pl-[11px] pr-[13px] font-regular bg-white/20  flex items-center justify-center text-black rounded-full">
+      <div className="w-full h-[100vh] flex flex-col items-center justify-center bg-white ">
+        <FloatingHeader />
+        <div className="p-[24px] pt-0 flex-1 w-full">
+          <div className="rainbow-radial w-full flex flex-col p-[64px] pb-[0px] items-start h-full rounded-[24px]">
+            <div className="flex w-full flex-col h-full justify-center items-center gap-[24px]">
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+                className="flex items-center gap-[16px] p-[8px] w-[180px] text-white rounded-lg bg-black/30 justify-center"
+              >
+                <p className="text-[14px]">AI-Autocomplete</p>
+                <i className="text-[14px] fa-solid fa-pencil"></i>
+              </motion.div>
+              <motion.h1
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: 0.1 }}
+                className="font-satoshi font-bold text-[64px] text-black !leading-[1.2] tracking-[-1.2px]"
+              >
+                WRITING + AI FOR STUDENTS
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: 0.2 }}
+                className="text-[18px] !leading-[1.2] text-black"
+              >
+                Autocomplete. Real-time Collaboration. Undetectable - Say
+                goodbye to docs.
+              </motion.p>
+              <div className="flex h-fit justify-end items-center gap-[16px]">
+                {/* <button className="p-[12px] pl-[11px] pr-[13px] font-regular bg-white/20  flex items-center justify-center text-black rounded-full">
               <i className="text-white/30 fa-solid fa-play"></i>
             </button> */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.3 }}
-            >
-              <Button variant="secondary">
-                <p>{"View Demo"}</p>
-              </Button>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.3 }}
-            >
-              <Button variant="primary">
-                <p>{"Join Waitlist ->"}</p>
-              </Button>
-            </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: 0.3 }}
+                >
+                  <Button size="medium" variant="secondary">
+                    {"View Demo"}
+                  </Button>
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: 0.3 }}
+                >
+                  <Button size="medium" variant="primary">
+                    {"Join Waitlist ->"}
+                  </Button>
+                </motion.div>
+              </div>
+            </div>
+            <div className="w-full flex justify-center items-center">
+              <img
+                src="/assets/example.png"
+                alt="example"
+                className="object-cover w-[70%] h-[200px] object-top rounded-t-[12px]"
+              />
+            </div>
           </div>
         </div>
-        {/* <div className="absolute text-white/80 bottom-[24px] animate-bounce items-center gap-[4px] flex flex-col">
-          <p className="text-[18px]">Learn More</p>
-          <i className="text-[18px] fa-solid fa-chevron-down"></i>
-        </div> */}
-        {/* <div className="w-full h-fit translate-y-1/2 absolute bottom-0 left-0 hidden sm:flex justify-center">
-          <div
-            style={{
-              perspective: 900,
-            }}
-            className="w-[80%] glow-container overflow-hidden rounded-t-[var(--radius-20)] sm:rounded-t-none"
-          >
-            <motion.img
-              ref={imgRef}
-              src="/assets/example.png"
-              alt="example"
-              className="rounded-[var(--radius-20)] h-[300px] object-top-left object-cover sm:h-auto sm:mx-auto sm:scale-100"
-              style={{
-                rotateX: imgRotateX,
-                position: "relative",
-                transformStyle: "preserve-3d",
-                transformOrigin: "center bottom",
-              }}
-            />
-          </div>
-        </div> */}
       </div>
-      {/* <div className="w-full h-fit flex bg-gray-300 text-black gap-[16px] sm:px-[400px] sm:py-[48px] flex-col p-[24px]">
-        <h1 className="text-[32px]  font-semibold text-black">
-          Platform for all your writing needs.
-        </h1>
-        <p className="text-[16px] font-mediumtext-right text-black/80">
-          Goodbye Docs & Grammarly. Hello Writely. Add references, stylize with
-          AI, and collaborate with others.
-        </p>
-        <button className="border border-black/20 w-fit py-[12px] text-[16px] px-[24px] text-black rounded-lg">
-          <p>View Demo {"->"}</p>
-        </button>
-        
-        <motion.div
-          initial={{ y: 50 }}
-          whileInView={{
-            y: 0,
-            transition: {
-              type: "spring",
-              stiffness: 100,
-              damping: 15,
-            },
-          }}
-          viewport={{ once: true }}
-          className="p-[24px] updatedbg rounded-[24px] bg-black/10 flex w-full justify-between gap-[12px]"
-        >
-          <button className="bg-white/10 w-fit py-[12px] text-[16px] px-[24px] text-white rounded-lg">
-            <p>{"Explore Writely ->"}</p>
-          </button>
-          <button className="p-[12px] pl-[11px] pr-[13px] font-regular bg-white/10 flex items-center justify-center text-black rounded-full">
-            <i className="text-white fa-solid fa-play"></i>
-          </button>
-        </motion.div>
-      </div> */}
       <div className="bg-gray-900 sm:px-[120px] py-[96px]  relative flex sm:flex-row flex-col gap-[24px] sm:gap-[48px] text-white text-left justify-end sm:items-center ">
         <div className="flex flex-col gap-[16px]">
           <div className="flex z-20 text-white items-center gap-[12px]">
