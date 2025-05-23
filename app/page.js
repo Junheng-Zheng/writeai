@@ -16,7 +16,7 @@ const Page = () => {
       <FloatingHeader />
       <div className="w-full h-fit flex flex-col items-center justify-center bg-white ">
         <div className="sm:p-[24px] px-[24px] py-[48px] flex-1 w-full">
-          <div className="rainbow-radial w-full flex flex-col sm:p-[72px] sm:pb-[0px] items-center gap-[24px] sm:gap-[48px] h-full rounded-[24px]">
+          <div className="rainbow-radial-animated w-full flex flex-col sm:p-[72px] sm:pb-[0px] items-center gap-[24px] sm:gap-[48px] h-full rounded-[24px]">
             <div className="flex w-full flex-col h-full justify-center items-center gap-[24px] sm:gap-[16px]">
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
@@ -113,7 +113,7 @@ const Page = () => {
         </InfoContent>
       </motion.div>
       <div className="p-[48px] w-full h-fit">
-        <div className="p-[48px] rainbow-radial w-full h-full rounded-[24px]">
+        <div className="p-[48px] rainbow-radial-animated w-full h-full rounded-[24px]">
           <div className="flex flex-col gap-[24px]">
             <div className="w-full h-fit grid  border-black/10 grid-cols-4  gap-[36px]">
               <Tiltcard

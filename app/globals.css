@@ -302,7 +302,7 @@ body * {
   background-repeat: repeat, repeat, no-repeat;
 }
 
-.rainbow-radial {
+.rainbow-radial-animated {
   background: radial-gradient(
     circle at 50% 50%,
     rgba(0, 41, 204, 0.2) 0%,
@@ -312,6 +312,17 @@ body * {
   );
   background-position: center;
   animation: gradient 10s ease infinite;
+}
+
+.rainbow-radial {
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(0, 41, 204, 0.2) 0%,
+    rgba(0, 30, 153, 0.2) 25%,
+    rgba(153, 0, 204, 0.2) 75%,
+    rgba(64, 0, 255, 0.518) 100%
+  );
+  background-size: 400% 400%;
 }
 
 @keyframes gradient {
