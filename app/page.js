@@ -15,8 +15,8 @@ const Page = () => {
     <>
       <FloatingHeader />
       <div className="w-full h-fit flex flex-col items-center justify-center bg-white ">
-        <div className="sm:p-[24px]  flex-1 w-full">
-          <div className="rainbow-radial px-[24px] py-[48px] pb-[0px] w-full flex flex-col sm:p-[72px] sm:pb-[0px] items-center gap-[24px] sm:gap-[48px] h-full sm:rounded-[24px]">
+        <div className="sm:p-[48px] flex-1 w-full">
+          <div className="rainbow-radial px-[24px] py-[48px] pb-[0px] w-full flex flex-col sm:p-[96px] sm:pb-[0px] items-center gap-[24px] sm:gap-[48px] h-full sm:rounded-[24px]">
             <div className="flex w-full flex-col h-full justify-center items-center gap-[24px] sm:gap-[16px]">
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
