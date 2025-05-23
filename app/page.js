@@ -9,6 +9,7 @@ import Button from "./components/designsystem/button";
 import FloatingHeader from "./components/designsystem/floatingHeader";
 import InfoContent from "./components/designsystem/infoContent";
 import Footer from "./components/designsystem/footer";
+import Tag from "./components/ui/Tag";
 const Page = () => {
   return (
     <>
@@ -17,7 +18,7 @@ const Page = () => {
         <div className="p-[24px] flex-1 w-full">
           <div className="rainbow-radial w-full flex flex-col p-[72px] pb-[0px] items-start gap-[48px] h-full rounded-[24px]">
             <div className="flex w-full flex-col h-full justify-center items-center gap-[16px]">
-              <motion.div
+              {/* <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3 }}
@@ -25,7 +26,15 @@ const Page = () => {
               >
                 <p className="text-[14px]">AI-Autocomplete</p>
                 <i className="text-[14px] fa-solid fa-pencil"></i>
+              </motion.div> */}
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Tag />
               </motion.div>
+
               <motion.h1
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -169,7 +178,7 @@ const Page = () => {
                 icon={<i className="text-[21px] fa-solid fa-pencil"></i>}
                 tagColor={"text-purple-500"}
                 tagBgColor={"bg-purple-500/30"}
-                delay={0.5}
+                delay={0.1}
               />
               <Tiltcard
                 tagName={"Collaboration"}
@@ -181,7 +190,7 @@ const Page = () => {
                 icon={<i className="text-[21px] fa-solid fa-users"></i>}
                 tagColor={"text-blue-500"}
                 tagBgColor={"bg-blue-500/30"}
-                delay={0.6}
+                delay={0.2}
               />
               <Tiltcard
                 tagName={"Reference"}
@@ -191,7 +200,7 @@ const Page = () => {
                 icon={<i className="text-[21px] fa-solid fa-quote-left"></i>}
                 tagColor={"text-green-500"}
                 tagBgColor={"bg-green-500/30"}
-                delay={0.7}
+                delay={0.3}
               />
               <Tiltcard
                 tagName={"Past Work"}
@@ -201,7 +210,7 @@ const Page = () => {
                 icon={<i className="text-[21px] fa-solid fa-file-lines"></i>}
                 tagColor={"text-yellow-500"}
                 tagBgColor={"bg-yellow-500/30"}
-                delay={0.8}
+                delay={0.4}
               />
             </div>
           </div>

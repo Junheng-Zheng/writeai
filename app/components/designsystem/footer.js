@@ -39,8 +39,9 @@ const Footer = () => {
       <div className="text-[14px] w-full p-[48px] flex justify-between ">
         <div className="w-full flex flex-col ">
           <div className="flex items-center p-[12px] px-[16px] rounded-full border border-black/10 w-fit bg-gray-100 gap-[12px]">
-            <i className="fa-solid fa-circle glow-container text-[rgb(54,222,48)]"></i>
-            <p>All systems operational</p>
+            <i className="fa-solid fa-circle glow-container text-[rgb(54,222,48)] text-yellow-500"></i>
+            {/* <p>All systems operational</p> */}
+            Writely in development
           </div>
         </div>
         <div className="w-full flex justify-end gap-[36px]">

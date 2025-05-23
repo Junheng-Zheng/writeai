@@ -33,7 +33,7 @@ const Payment = () => {
           <div className="w-full pb-[var(--space-20)]">
             <PaymentCard
               tier="Pro"
-              price="25"
+              price="10"
               bulletpoints={[
                 "Everything in Free",
                 "Unlimited reference imports",
@@ -49,7 +49,7 @@ const Payment = () => {
             />
           </div>
           <PaymentCard
-            tier="Write"
+            tier="Writer"
             price="25"
             buttontype="secondary"
             bulletpoints={[

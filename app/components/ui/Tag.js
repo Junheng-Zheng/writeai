@@ -15,8 +15,8 @@ const Tag = ({ children, className }) => {
     return () => clearInterval(interval);
   }, [words]);
   return (
-    <div className="bg-white text-[14px] sm:text-[16px]  transition-all w-[175px] sm:w-[225px] justify-center overflow-hidden rounded-full blue px-[var(--space-20)] font-[501] flex items-center gap-[var(--space-10)] border-[1px] border-[var(--color-blue-primary)]">
-      <div className="w-fit h-full overflow-hidden py-[var(--space-10)]">
+    <div className="flex items-center gap-[16px] p-[8px] w-[200px] text-white rounded-full rainbow-radial justify-center">
+      <div className="w-fit h-full overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.p
             key={index}

@@ -19,7 +19,7 @@ const Toggle = () => {
   const { yearly, setYearly } = useToggle();
 
   return (
-    <div className="rounded-full flex rainbow-radial p-[12px]">
+    <div className="rounded-full z-20 flex rainbow-radial p-[12px]">
       <button
         className={`${
           yearly ? "text-white " : "text-black bg-white"
