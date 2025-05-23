@@ -16,7 +16,7 @@ const Page = () => {
       <FloatingHeader />
       <div className="w-full h-fit flex flex-col items-center justify-center bg-white ">
         <div className="sm:p-[24px] px-[24px] py-[48px] flex-1 w-full">
-          <div className="rainbow-radial-animated w-full flex flex-col sm:p-[72px] sm:pb-[0px] items-center gap-[24px] sm:gap-[48px] h-full rounded-[24px]">
+          <div className="rainbow-radial p-[24px] w-full flex flex-col sm:p-[72px] sm:pb-[0px] items-center gap-[24px] sm:gap-[48px] h-full rounded-[24px]">
             <div className="flex w-full flex-col h-full justify-center items-center gap-[24px] sm:gap-[16px]">
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
@@ -30,7 +30,7 @@ const Page = () => {
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: 0.1 }}
-                className=" font-semibold sm:text-[64px] text-center text-[42px] text-black !leading-[1.2] tracking-[-1.2px]"
+                className=" font-semibold sm:text-[64px] text-center text-[32px] text-black !leading-[1.2] tracking-[-1.2px]"
               >
                 WRITING + AI FOR STUDENTS
               </motion.h1>
@@ -73,7 +73,7 @@ const Page = () => {
               <img
                 src="/assets/example.png"
                 alt="example"
-                className="object-cover sm:w-[70%] sm:h-full h-[200px] sm:object-top object-left-top sm:rounded-t-[12px] border border-black/10"
+                className="object-cover sm:w-[70%] sm:h-full h-[200px] sm:object-top object-left-top sm:rounded-t-[12px] border border-black/10 rounded-[18px]"
               />
             </div>
           </div>
