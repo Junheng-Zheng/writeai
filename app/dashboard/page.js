@@ -64,7 +64,7 @@ export default function DashboardPage() {
 
   return (
     <div>
-      <h1>Welcome, {user.name || user.email || user['cognito:username']}</h1>
+      <h1>Welcome, {user.name?.split(' ')[0] || user.email || user['cognito:username']}</h1>
       <p>Email: {user.email}</p>
       <p>Username: {user['cognito:username']}</p>
     </div>
