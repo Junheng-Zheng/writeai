@@ -4,11 +4,11 @@ import PaymentCard from "../ui/Paymentcard";
 
 const Payment = () => {
   return (
-    <div className="w-full flex flex-col items-center relative text-black rounded-t-[24px] border-t border-black/10 justify-center gap-[48px] p-[48px] ">
+    <div className="w-full flex flex-col items-center relative text-black rounded-t-[24px] border-t border-black/10 justify-center gap-[48px] sm:p-[48px] px-[24px] py-[48px]">
       <h4 className="sm:text-[56px] text-[42px]  font-semibold">
         Find your Plan.
       </h4>
-      <div className="absolute top-0 left-0 w-full h-full px-[96px]">
+      <div className="absolute top-0 left-0 w-full h-full sm:px-[96px] px-[36px]">
         <div className="w-full h-full border-l border-r border-black/10"></div>
       </div>
       <ToggleProvider>
@@ -41,7 +41,7 @@ const Payment = () => {
                 "Priority support",
               ]}
               buttontype="primary"
-              background="white"
+              background="bg-white"
               image="/assets/example.png"
               delay={0.1}
               buttontext="Subscribe"

@@ -2,9 +2,11 @@ import Button from "./button";
 
 const InfoContent = ({ title, children, position = "right", className }) => {
   return (
-    <div className={`sm:px-[48px]  border-b border-black/10 ${className}`}>
+    <div
+      className={`sm:px-[48px] px-[24px] border-b border-black/10 ${className}`}
+    >
       <div
-        className={`w-full border-l border-r border-black/10 sm:px-[48px] py-[96px] gap-[24px] flex ${
+        className={`w-full border-l border-r border-black/10 sm:px-[48px] px-[24px] py-[48px] sm:py-[96px] gap-[24px] flex ${
           position === "right" ? "sm:flex-row" : "sm:flex-row-reverse"
         }   relative flex  flex-col sm:gap-[48px] text-white text-left justify-center sm:items-center `}
       >
@@ -13,7 +15,7 @@ const InfoContent = ({ title, children, position = "right", className }) => {
             <div className="text-[16px] w-[40px] flex items-center justify-center rainbow-radial aspect-square rounded-full font-bold ">
               W
             </div>
-            <h2 className="font-satoshi text-[36px] font-bold text-black">
+            <h2 className="font-satoshi sm:text-[36px] text-[24px] font-bold text-black">
               {title}
             </h2>
           </div>

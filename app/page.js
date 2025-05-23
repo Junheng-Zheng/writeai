@@ -15,8 +15,8 @@ const Page = () => {
     <>
       <FloatingHeader />
       <div className="w-full h-fit flex flex-col items-center justify-center bg-white ">
-        <div className="sm:p-[24px] px-[24px] py-[48px] flex-1 w-full">
-          <div className="rainbow-radial p-[24px] w-full flex flex-col sm:p-[72px] sm:pb-[0px] items-center gap-[24px] sm:gap-[48px] h-full rounded-[24px]">
+        <div className="sm:p-[24px]  flex-1 w-full">
+          <div className="rainbow-radial px-[24px] py-[48px] pb-[0px] w-full flex flex-col sm:p-[72px] sm:pb-[0px] items-center gap-[24px] sm:gap-[48px] h-full sm:rounded-[24px]">
             <div className="flex w-full flex-col h-full justify-center items-center gap-[24px] sm:gap-[16px]">
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
@@ -43,12 +43,12 @@ const Page = () => {
                 Autocomplete. Real-time Collaboration. Undetectable - Say
                 goodbye to docs.
               </motion.p>
-              <div className="flex h-fit justify-end items-center gap-[16px]">
+              <div className="sm:flex-row flex-col flex h-fit justify-end items-center gap-[16px]">
                 <motion.div
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: 0.3 }}
-                  className="hidden sm:flex"
+                  className="sm:block hidden"
                 >
                   <Button
                     size="large"
@@ -73,23 +73,16 @@ const Page = () => {
               <img
                 src="/assets/example.png"
                 alt="example"
-                className="object-cover sm:w-[70%] sm:h-full h-[200px] sm:object-top object-left-top sm:rounded-t-[12px] border border-black/10 rounded-[18px]"
+                className="object-cover sm:w-[70%] sm:h-full h-[200px] sm:object-top object-left-top sm:rounded-t-[12px] border border-black/10 border-b-0"
               />
             </div>
           </div>
         </div>
       </div>
-      <motion.div
-        initial={{ opacity: 0, y: 100 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3 }}
-        viewport={{ amount: 0.2 }}
-      >
-        <InfoContent title={"AI-Autocomplete"} className="border-t">
-          Autocomplete your writing. Add source references and stylize with your
-          past work.
-        </InfoContent>
-      </motion.div>
+      <InfoContent title={"AI-Autocomplete"} className="border-t">
+        Autocomplete your writing. Add source references and stylize with your
+        past work.
+      </InfoContent>
       <motion.div
         initial={{ opacity: 0, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -112,10 +105,10 @@ const Page = () => {
           past work.
         </InfoContent>
       </motion.div>
-      <div className="p-[48px] w-full h-fit">
-        <div className="p-[48px] rainbow-radial-animated w-full h-full rounded-[24px]">
+      <div className="sm:p-[48px] w-full h-fit">
+        <div className="sm:p-[48px] px-[24px] py-[48px] rainbow-radial-animated w-full h-full sm:rounded-[24px]">
           <div className="flex flex-col gap-[24px]">
-            <div className="w-full h-fit grid  border-black/10 grid-cols-4  gap-[36px]">
+            <div className="w-full h-fit grid  border-black/10 sm:grid-cols-4 grid-cols-1 sm:gap-[36px] gap-[24px]">
               <Tiltcard
                 tagName={"AI"}
                 title={"AI-Autocomplete"}

@@ -20,7 +20,7 @@ const FloatingHeader = () => {
   return (
     <div
       ref={ref}
-      className={`z-30 w-full sticky flex justify-center top-0 sm:p-[24px] border-b h-fit ${
+      className={`z-30 w-full sticky flex justify-center top-0 sm:p-[24px] py-[12px] border-b h-fit ${
         scrolled ? "bg-black/10 backdrop-blur-md" : "bg-transparent  "
       } transition-all duration-300`}
     >
