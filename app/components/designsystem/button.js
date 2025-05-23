@@ -9,6 +9,7 @@ const Button = ({ children, className, size, variant }) => {
   const variantStyles = {
     primary: "bg-white text-black",
     secondary: "bg-black text-white",
+    tertiary: "bg-white text-black border border-black/10",
   };
   return (
     <button

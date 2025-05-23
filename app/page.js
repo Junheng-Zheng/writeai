@@ -4,9 +4,10 @@ import Search from "./components/ui/Search";
 import Link from "next/link";
 import { useRef } from "react";
 import Payment from "./components/sections/Payment";
-import Tiltcard from "./components/Tiltcard";
+import Tiltcard from "./components/designsystem/Tiltcard";
 import Button from "./components/designsystem/button";
 import FloatingHeader from "./components/designsystem/floatingHeader";
+import InfoContent from "./components/designsystem/infoContent";
 const Page = () => {
   return (
     <>
@@ -19,7 +20,7 @@ const Page = () => {
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3 }}
-                className="flex items-center gap-[16px] p-[8px] w-[180px] text-white rounded-lg bg-black/30 justify-center"
+                className="flex items-center gap-[16px] p-[8px] w-[180px] text-white rounded-lg rainbow-radial justify-center"
               >
                 <p className="text-[14px]">AI-Autocomplete</p>
                 <i className="text-[14px] fa-solid fa-pencil"></i>
@@ -75,99 +76,104 @@ const Page = () => {
           </div>
         </div>
       </div>
-      <div className="bg-gray-900 sm:px-[120px] py-[96px]  relative flex sm:flex-row flex-col gap-[24px] sm:gap-[48px] text-white text-left justify-end sm:items-center ">
-        <div className="flex flex-col gap-[16px]">
-          <div className="flex z-20 text-white items-center gap-[12px]">
-            <img
-              src="/assets/icon.png"
-              alt="logo"
-              className="w-[36px] aspect-square object-contain rounded-[4px]"
-            />
-            <h2 className="text-[32px] font-bold text-white">
-              AI-Autocomplete
-            </h2>
+      <InfoContent title={"AI-Autocomplete"}>
+        Autocomplete your writing. Add source references and stylize with your
+        past work.
+      </InfoContent>
+      <InfoContent title={"AI-Autocomplete"} position="left">
+        Autocomplete your writing. Add source references and stylize with your
+        past work.
+      </InfoContent>
+
+      <div className="p-[48px] w-full h-fit">
+        <div className="p-[48px] rainbow-radial w-full h-full rounded-[24px]">
+          <div className="flex flex-col gap-[24px]">
+            <div className="w-full h-fit grid  border-black/10 grid-cols-4  gap-[24px]">
+              <Tiltcard
+                tagName={"AI"}
+                title={"AI-Autocomplete"}
+                description={
+                  "You write, AI finish, AI autocomplete, only on writely"
+                }
+                buttonText={"Explore Writely ->"}
+                icon={<i className="text-[21px] fa-solid fa-pencil"></i>}
+                tagColor={"text-purple-500"}
+                tagBgColor={"bg-purple-500/30"}
+              />
+              <Tiltcard
+                tagName={"Collaboration"}
+                title={"Work with others"}
+                description={
+                  "Collaborate with others in real-time, only on writely"
+                }
+                buttonText={"Explore Writely ->"}
+                icon={<i className="text-[21px] fa-solid fa-users"></i>}
+                tagColor={"text-blue-500"}
+                tagBgColor={"bg-blue-500/30"}
+              />
+              <Tiltcard
+                tagName={"Reference"}
+                title={"Add References"}
+                description={"Add references to your writing, only on writely"}
+                buttonText={"Explore Writely ->"}
+                icon={<i className="text-[21px] fa-solid fa-quote-left"></i>}
+                tagColor={"text-green-500"}
+                tagBgColor={"bg-green-500/30"}
+              />
+              <Tiltcard
+                tagName={"Past Work"}
+                title={"Add past work"}
+                description={"Add past work to your writing, only on writely"}
+                buttonText={"Explore Writely ->"}
+                icon={<i className="text-[21px] fa-solid fa-file-lines"></i>}
+                tagColor={"text-yellow-500"}
+                tagBgColor={"bg-yellow-500/30"}
+              />
+              <Tiltcard
+                tagName={"AI"}
+                title={"AI-Autocomplete"}
+                description={
+                  "You write, AI finish, AI autocomplete, only on writely"
+                }
+                buttonText={"Explore Writely ->"}
+                icon={<i className="text-[21px] fa-solid fa-pencil"></i>}
+                tagColor={"text-purple-500"}
+                tagBgColor={"bg-purple-500/30"}
+              />
+              <Tiltcard
+                tagName={"Collaboration"}
+                title={"Work with others"}
+                description={
+                  "Collaborate with others in real-time, only on writely"
+                }
+                buttonText={"Explore Writely ->"}
+                icon={<i className="text-[21px] fa-solid fa-users"></i>}
+                tagColor={"text-blue-500"}
+                tagBgColor={"bg-blue-500/30"}
+              />
+              <Tiltcard
+                tagName={"Reference"}
+                title={"Add References"}
+                description={"Add references to your writing, only on writely"}
+                buttonText={"Explore Writely ->"}
+                icon={<i className="text-[21px] fa-solid fa-quote-left"></i>}
+                tagColor={"text-green-500"}
+                tagBgColor={"bg-green-500/30"}
+              />
+              <Tiltcard
+                tagName={"Past Work"}
+                title={"Add past work"}
+                description={"Add past work to your writing, only on writely"}
+                buttonText={"Explore Writely ->"}
+                icon={<i className="text-[21px] fa-solid fa-file-lines"></i>}
+                tagColor={"text-yellow-500"}
+                tagBgColor={"bg-yellow-500/30"}
+              />
+            </div>
           </div>
-          <p className="text-[18px] z-20 text-white">
-            Autocomplete your writing. Add source references and stylize with
-            your past work.
-          </p>
-          <div className="flex w-full z-20 justify-start">
-            <Button variant="primary">
-              <p>{"Explore Writely ->"}</p>
-            </Button>
-          </div>
-        </div>
-        <div className="z-20 h-fit w-full relative">
-          <img
-            src="/assets/example.png"
-            alt="example"
-            className="object-cover w-full h-[300px] sm:h-[350px] object-top-left rounded-[12px]"
-          />
-          <button className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-[12px] pl-[11px] pr-[13px] font-regular bg-black/20 backdrop-blur-sm flex items-center justify-center text-white rounded-full">
-            <i className="text-white fa-solid fa-play"></i>
-          </button>
         </div>
       </div>
-      <div className="w-full updatedbg flex flex-col p-[120px] border-t border-black/10  gap-[54px]">
-        <div className="flex justify-between items-center  text-white">
-          <div className="flex z-20 text-white w-full items-center gap-[12px]">
-            <img
-              src="/assets/icon.png"
-              alt="logo"
-              className="w-[36px] aspect-square object-contain rounded-[4px]"
-            />
-            <h2 className="text-[32px] font-bold text-white">
-              Writely&apos;s Features
-            </h2>
-          </div>
-          <p className="text-[18px] text-right">
-            Truly enhance your writing with AI. Many of these features with more
-            Coming soon
-          </p>
-        </div>
-        <div className="w-full h-fit grid  border-black/10 grid-cols-4  gap-[24px]">
-          <Tiltcard
-            tagName={"AI"}
-            title={"AI-Autocomplete"}
-            description={
-              "You write, AI finish, AI autocomplete, only on writely"
-            }
-            buttonText={"Explore Writely ->"}
-            icon={<i className="text-[21px] fa-solid fa-pencil"></i>}
-            tagColor={"text-purple-500"}
-            tagBgColor={"bg-purple-500/30"}
-          />
-          <Tiltcard
-            tagName={"Collaboration"}
-            title={"Work with others"}
-            description={
-              "Collaborate with others in real-time, only on writely"
-            }
-            buttonText={"Explore Writely ->"}
-            icon={<i className="text-[21px] fa-solid fa-users"></i>}
-            tagColor={"text-blue-500"}
-            tagBgColor={"bg-blue-500/30"}
-          />
-          <Tiltcard
-            tagName={"Reference"}
-            title={"Add References"}
-            description={"Add references to your writing, only on writely"}
-            buttonText={"Explore Writely ->"}
-            icon={<i className="text-[21px] fa-solid fa-quote-left"></i>}
-            tagColor={"text-green-500"}
-            tagBgColor={"bg-green-500/30"}
-          />
-          <Tiltcard
-            tagName={"Past Work"}
-            title={"Add past work"}
-            description={"Add past work to your writing, only on writely"}
-            buttonText={"Explore Writely ->"}
-            icon={<i className="text-[21px] fa-solid fa-file-lines"></i>}
-            tagColor={"text-yellow-500"}
-            tagBgColor={"bg-yellow-500/30"}
-          />
-        </div>
-      </div>
+
       {/* <Payment /> */}
       {/* <Whyus /> */}
       {/* <Payment /> */}

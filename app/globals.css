@@ -151,7 +151,7 @@ html::-webkit-scrollbar {
 }
 
 body {
-  background: var(--color-blue-darkest);
+  background: white;
   font-family: "Inter", sans-serif;
 }
 
