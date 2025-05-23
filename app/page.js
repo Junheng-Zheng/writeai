@@ -76,19 +76,34 @@ const Page = () => {
           </div>
         </div>
       </div>
-      <InfoContent title={"AI-Autocomplete"}>
-        Autocomplete your writing. Add source references and stylize with your
-        past work.
-      </InfoContent>
-      <InfoContent title={"AI-Autocomplete"} position="left">
-        Autocomplete your writing. Add source references and stylize with your
-        past work.
-      </InfoContent>
+      <motion.div
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
+        viewport={{ amount: 0.2 }}
+      >
+        <InfoContent title={"AI-Autocomplete"}>
+          Autocomplete your writing. Add source references and stylize with your
+          past work.
+        </InfoContent>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
+        viewport={{ amount: 0.2 }}
+      >
+        <InfoContent title={"AI-Autocomplete"} position="left">
+          Autocomplete your writing. Add source references and stylize with your
+          past work.
+        </InfoContent>
+      </motion.div>
 
       <div className="p-[48px] w-full h-fit">
         <div className="p-[48px] rainbow-radial w-full h-full rounded-[24px]">
           <div className="flex flex-col gap-[24px]">
-            <div className="w-full h-fit grid  border-black/10 grid-cols-4  gap-[24px]">
+            <div className="w-full h-fit grid  border-black/10 grid-cols-4  gap-[36px]">
               <Tiltcard
                 tagName={"AI"}
                 title={"AI-Autocomplete"}
@@ -99,6 +114,7 @@ const Page = () => {
                 icon={<i className="text-[21px] fa-solid fa-pencil"></i>}
                 tagColor={"text-purple-500"}
                 tagBgColor={"bg-purple-500/30"}
+                delay={0.1}
               />
               <Tiltcard
                 tagName={"Collaboration"}
@@ -110,6 +126,7 @@ const Page = () => {
                 icon={<i className="text-[21px] fa-solid fa-users"></i>}
                 tagColor={"text-blue-500"}
                 tagBgColor={"bg-blue-500/30"}
+                delay={0.2}
               />
               <Tiltcard
                 tagName={"Reference"}
@@ -119,6 +136,7 @@ const Page = () => {
                 icon={<i className="text-[21px] fa-solid fa-quote-left"></i>}
                 tagColor={"text-green-500"}
                 tagBgColor={"bg-green-500/30"}
+                delay={0.3}
               />
               <Tiltcard
                 tagName={"Past Work"}
@@ -128,6 +146,7 @@ const Page = () => {
                 icon={<i className="text-[21px] fa-solid fa-file-lines"></i>}
                 tagColor={"text-yellow-500"}
                 tagBgColor={"bg-yellow-500/30"}
+                delay={0.4}
               />
               <Tiltcard
                 tagName={"AI"}
@@ -139,6 +158,7 @@ const Page = () => {
                 icon={<i className="text-[21px] fa-solid fa-pencil"></i>}
                 tagColor={"text-purple-500"}
                 tagBgColor={"bg-purple-500/30"}
+                delay={0.5}
               />
               <Tiltcard
                 tagName={"Collaboration"}
@@ -150,6 +170,7 @@ const Page = () => {
                 icon={<i className="text-[21px] fa-solid fa-users"></i>}
                 tagColor={"text-blue-500"}
                 tagBgColor={"bg-blue-500/30"}
+                delay={0.6}
               />
               <Tiltcard
                 tagName={"Reference"}
@@ -159,6 +180,7 @@ const Page = () => {
                 icon={<i className="text-[21px] fa-solid fa-quote-left"></i>}
                 tagColor={"text-green-500"}
                 tagBgColor={"bg-green-500/30"}
+                delay={0.7}
               />
               <Tiltcard
                 tagName={"Past Work"}
@@ -168,6 +190,7 @@ const Page = () => {
                 icon={<i className="text-[21px] fa-solid fa-file-lines"></i>}
                 tagColor={"text-yellow-500"}
                 tagBgColor={"bg-yellow-500/30"}
+                delay={0.8}
               />
             </div>
           </div>
