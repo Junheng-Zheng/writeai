@@ -3,8 +3,8 @@ import Button from "./button";
 import { motion } from "framer-motion";
 const defaultOptions = {
   reverse: false,
-  max: 35,
-  perspective: 1000,
+  max: 12,
+  perspective: 1200,
   scale: 1,
 };
 const Tiltcard = ({

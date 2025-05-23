@@ -29,7 +29,7 @@ const Page = () => {
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: 0.1 }}
-                className="font-satoshi font-bold text-[64px] text-black !leading-[1.2] tracking-[-1.2px]"
+                className=" font-semibold text-[64px] text-black !leading-[1.2] tracking-[-1.2px]"
               >
                 WRITING + AI FOR STUDENTS
               </motion.h1>
@@ -37,7 +37,7 @@ const Page = () => {
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: 0.2 }}
-                className="text-[18px] !leading-[1.2] text-black"
+                className="text-[21px]  !leading-[1.2] text-black"
               >
                 Autocomplete. Real-time Collaboration. Undetectable - Say
                 goodbye to docs.
@@ -51,7 +51,7 @@ const Page = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: 0.3 }}
                 >
-                  <Button size="medium" variant="secondary">
+                  <Button size="large" variant="secondary">
                     {"View Demo"}
                   </Button>
                 </motion.div>
@@ -60,8 +60,8 @@ const Page = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: 0.3 }}
                 >
-                  <Button size="medium" variant="primary">
-                    {"Join Waitlist ->"}
+                  <Button size="large" variant="primary">
+                    {"Join Waitlist "}
                   </Button>
                 </motion.div>
               </div>
@@ -110,7 +110,7 @@ const Page = () => {
                 description={
                   "You write, AI finish, AI autocomplete, only on writely"
                 }
-                buttonText={"Explore Writely ->"}
+                buttonText={"Explore Writely "}
                 icon={<i className="text-[21px] fa-solid fa-pencil"></i>}
                 tagColor={"text-purple-500"}
                 tagBgColor={"bg-purple-500/30"}
@@ -122,7 +122,7 @@ const Page = () => {
                 description={
                   "Collaborate with others in real-time, only on writely"
                 }
-                buttonText={"Explore Writely ->"}
+                buttonText={"Explore Writely "}
                 icon={<i className="text-[21px] fa-solid fa-users"></i>}
                 tagColor={"text-blue-500"}
                 tagBgColor={"bg-blue-500/30"}
@@ -132,7 +132,7 @@ const Page = () => {
                 tagName={"Reference"}
                 title={"Add References"}
                 description={"Add references to your writing, only on writely"}
-                buttonText={"Explore Writely ->"}
+                buttonText={"Explore Writely "}
                 icon={<i className="text-[21px] fa-solid fa-quote-left"></i>}
                 tagColor={"text-green-500"}
                 tagBgColor={"bg-green-500/30"}
@@ -142,7 +142,7 @@ const Page = () => {
                 tagName={"Past Work"}
                 title={"Add past work"}
                 description={"Add past work to your writing, only on writely"}
-                buttonText={"Explore Writely ->"}
+                buttonText={"Explore Writely "}
                 icon={<i className="text-[21px] fa-solid fa-file-lines"></i>}
                 tagColor={"text-yellow-500"}
                 tagBgColor={"bg-yellow-500/30"}
@@ -154,7 +154,7 @@ const Page = () => {
                 description={
                   "You write, AI finish, AI autocomplete, only on writely"
                 }
-                buttonText={"Explore Writely ->"}
+                buttonText={"Explore Writely "}
                 icon={<i className="text-[21px] fa-solid fa-pencil"></i>}
                 tagColor={"text-purple-500"}
                 tagBgColor={"bg-purple-500/30"}
@@ -166,7 +166,7 @@ const Page = () => {
                 description={
                   "Collaborate with others in real-time, only on writely"
                 }
-                buttonText={"Explore Writely ->"}
+                buttonText={"Explore Writely "}
                 icon={<i className="text-[21px] fa-solid fa-users"></i>}
                 tagColor={"text-blue-500"}
                 tagBgColor={"bg-blue-500/30"}
@@ -176,7 +176,7 @@ const Page = () => {
                 tagName={"Reference"}
                 title={"Add References"}
                 description={"Add references to your writing, only on writely"}
-                buttonText={"Explore Writely ->"}
+                buttonText={"Explore Writely "}
                 icon={<i className="text-[21px] fa-solid fa-quote-left"></i>}
                 tagColor={"text-green-500"}
                 tagBgColor={"bg-green-500/30"}
@@ -186,7 +186,7 @@ const Page = () => {
                 tagName={"Past Work"}
                 title={"Add past work"}
                 description={"Add past work to your writing, only on writely"}
-                buttonText={"Explore Writely ->"}
+                buttonText={"Explore Writely "}
                 icon={<i className="text-[21px] fa-solid fa-file-lines"></i>}
                 tagColor={"text-yellow-500"}
                 tagBgColor={"bg-yellow-500/30"}
