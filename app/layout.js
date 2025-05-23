@@ -1,9 +1,5 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Amplify } from 'aws-amplify';
-import { amplifyConfig } from '@/backend/aws/aws-config';
-
-Amplify.configure(amplifyConfig);
 
 const inter = Inter({
   subsets: ["latin"],
