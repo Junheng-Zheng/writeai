@@ -36,14 +36,14 @@ const Paymentcard = ({
       viewport={{ once: true }}
       className={`w-full h-fit  relative rounded-[24px] overflow-hidden flex flex-col items-center gap ${background} ${className}`}
     >
-      <div className="flex w-full z-200 p-[var(--space-25)] flex-col gap-[var(--space-15)] sm:gap-[var(--space-20)]">
+      <div className="flex w-full z-200 p-[24px] flex-col gap-[16px] sm:gap-[24px]">
         <div className="flex items-center gap-[var(--space-8)]">
           <div className="text-[16px] w-[40px] flex items-center justify-center rainbow-radial aspect-square rounded-full font-bold">
             W
           </div>
-          <h3 className=" text-[27px] sm:text-[24px] font-semibold">{tier}</h3>
+          <h3 className=" text-[24px] sm:text-[24px]">{tier}</h3>
         </div>
-        <h4 className=" text-[32px] sm:text-[36px] font-semibold">
+        <h4 className=" text-[32px] sm:text-[36px] font-medium">
           ${displayPrice}
           {billingPeriod}
         </h4>
@@ -57,9 +57,9 @@ const Paymentcard = ({
             Save 10% with yearly billing
           </p>
         )}
-        <div className="flex flex-col gap-[var(--space-10)] ">
+        <div className="flex flex-col gap-[16px] ">
           {bulletpoints.map((point, index) => (
-            <div key={index} className="flex items-center gap-[var(--space-5)]">
+            <div key={index} className="flex items-center gap-[12px]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="14"
