@@ -5,12 +5,14 @@ export async function POST(req) {
   if (!code) {
     return new Response(JSON.stringify({ error: 'Missing code' }), { status: 400 });
   }
+  const origin = req.headers.get('origin');
+  const redirectUri = `${origin}/dashboard`;
   const params = new URLSearchParams();
   params.append('grant_type', 'authorization_code');
   params.append('client_id', process.env.COGNITO_CLIENT_ID)
   params.append('code', code);
-  params.append('redirect_uri', 'https://writeai-five.vercel.app/dashboard');
-
+  params.append('redirect_uri', redirectUri);
+  
   const basicAuth = Buffer.from(
     `${process.env.COGNITO_CLIENT_ID}:${process.env.COGNITO_CLIENT_SECRET}`
   ).toString('base64');

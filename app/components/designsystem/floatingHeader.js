@@ -6,6 +6,15 @@ import Button from "./button";
 const FloatingHeader = () => {
   const [scrolled, setScrolled] = useState(false);
   const ref = useRef(null);
+  // Check if the website is being hosted locally
+  const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+  
+  // Construct the URL based on environment
+  const redirectUri = isLocal
+    ? 'http://localhost:3000/dashboard'
+    : 'https://writeai-five.vercel.app/dashboard';
+
+  const loginUrl = `https://us-east-2wosz12rja.auth.us-east-2.amazoncognito.com/login/continue?client_id=7vb6ksijcjvgve65fs0htb9ao4&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=code&scope=email+openid+phone`;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,7 +52,7 @@ const FloatingHeader = () => {
         <div className="sm:flex hidden items-center w-full gap-[36px] justify-end">
           <p>About</p>
           <p>Contact</p>
-          <Link href="https://us-east-2wosz12rja.auth.us-east-2.amazoncognito.com/login/continue?client_id=7vb6ksijcjvgve65fs0htb9ao4&redirect_uri=https%3A%2F%2Fwriteai-five.vercel.app%2Fdashboard&response_type=code&scope=email+openid+phone">
+          <Link href={loginUrl}>
             <Button size="medium" variant="secondary">
               Login
             </Button>
