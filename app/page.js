@@ -8,14 +8,15 @@ import Tiltcard from "./components/designsystem/Tiltcard";
 import Button from "./components/designsystem/button";
 import FloatingHeader from "./components/designsystem/floatingHeader";
 import InfoContent from "./components/designsystem/infoContent";
+import Footer from "./components/designsystem/footer";
 const Page = () => {
   return (
     <>
-      <div className="w-full h-[100vh] flex flex-col items-center justify-center bg-white ">
-        <FloatingHeader />
-        <div className="p-[24px] pt-0 flex-1 w-full">
-          <div className="rainbow-radial w-full flex flex-col p-[64px] pb-[0px] items-start h-full rounded-[24px]">
-            <div className="flex w-full flex-col h-full justify-center items-center gap-[24px]">
+      <FloatingHeader />
+      <div className="w-full h-fit flex flex-col items-center justify-center bg-white ">
+        <div className="p-[24px] flex-1 w-full">
+          <div className="rainbow-radial w-full flex flex-col p-[72px] pb-[0px] items-start gap-[48px] h-full rounded-[24px]">
+            <div className="flex w-full flex-col h-full justify-center items-center gap-[16px]">
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -43,15 +44,16 @@ const Page = () => {
                 goodbye to docs.
               </motion.p>
               <div className="flex h-fit justify-end items-center gap-[16px]">
-                {/* <button className="p-[12px] pl-[11px] pr-[13px] font-regular bg-white/20  flex items-center justify-center text-black rounded-full">
-              <i className="text-white/30 fa-solid fa-play"></i>
-            </button> */}
                 <motion.div
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: 0.3 }}
                 >
-                  <Button size="large" variant="secondary">
+                  <Button
+                    size="large"
+                    variant="secondary"
+                    className="w-[175px]"
+                  >
                     {"View Demo"}
                   </Button>
                 </motion.div>
@@ -60,8 +62,8 @@ const Page = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: 0.3 }}
                 >
-                  <Button size="large" variant="primary">
-                    {"Join Waitlist "}
+                  <Button size="large" variant="primary" className="w-[175px]">
+                    Sign up
                   </Button>
                 </motion.div>
               </div>
@@ -70,7 +72,7 @@ const Page = () => {
               <img
                 src="/assets/example.png"
                 alt="example"
-                className="object-cover w-[70%] h-[200px] object-top rounded-t-[12px]"
+                className="object-cover w-[70%] h-full object-top rounded-t-[12px]"
               />
             </div>
           </div>
@@ -82,12 +84,11 @@ const Page = () => {
         transition={{ duration: 0.3 }}
         viewport={{ amount: 0.2 }}
       >
-        <InfoContent title={"AI-Autocomplete"}>
+        <InfoContent title={"AI-Autocomplete"} className="border-t">
           Autocomplete your writing. Add source references and stylize with your
           past work.
         </InfoContent>
       </motion.div>
-
       <motion.div
         initial={{ opacity: 0, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -99,7 +100,17 @@ const Page = () => {
           past work.
         </InfoContent>
       </motion.div>
-
+      <motion.div
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
+        viewport={{ amount: 0.2 }}
+      >
+        <InfoContent title={"AI-Autocomplete"}>
+          Autocomplete your writing. Add source references and stylize with your
+          past work.
+        </InfoContent>
+      </motion.div>
       <div className="p-[48px] w-full h-fit">
         <div className="p-[48px] rainbow-radial w-full h-full rounded-[24px]">
           <div className="flex flex-col gap-[24px]">
@@ -196,52 +207,10 @@ const Page = () => {
           </div>
         </div>
       </div>
-
-      {/* <Payment /> */}
-      {/* <Whyus /> */}
-      {/* <Payment /> */}
+      <Payment />
+      <Footer />
     </>
   );
 };
 
 export default Page;
-
-{
-  /* <Hero />
-      <Whyus /> */
-}
-{
-  /* <div className="relative w-full flex flex-col gap-[var(--space-50)] px-[var(--space-150)] py-[var(--space-50)] mb-[-100px] bg-white">
-        <img
-          src="/assets/noise.jpeg"
-          alt="landingbg"
-          className="absolute top-0 left-0 w-full h-full opacity-5 object-cover"
-        />
-        <div className="z-200 flex gap-[var(--space-20)] items-center w-full">
-          <div className="flex flex-col gap-[var(--space-20)] w-full">
-            <div className="flex gap-[var(--space-8)] items-center">
-              <h4 className="text-[55px] font-semibold text-nowrap blue-gradient">
-                Say Goodbye To Docs
-              </h4>
-            </div>
-            <p className="text-[21px] font-[505]">
-              Everything you can do in docs, better. collaborate with others,
-              save to google drive.
-            </p>
-          </div>
-          <div className="w-full flex justify-end">
-            <Buttonarrow variant="secondary">Write Now</Buttonarrow>
-          </div>
-        </div>
-        <div className="w-full overflow-hidden rounded-t-[var(--radius-20)]  glow-container">
-          <img
-            src="/assets/example.png"
-            alt="example"
-            className="object-cover w-full rounded-[var(--radius-20)]"
-          />
-        </div>
-      </div> */
-}
-{
-  /* <Payment /> */
-}

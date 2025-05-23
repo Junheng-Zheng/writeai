@@ -21,14 +21,14 @@ const Tiltcard = ({
     <motion.div
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3, delay: delay }}
-      viewport={{ amount: 0.2 }}
+      transition={{ once: true, duration: 0.3, delay: delay }}
+      viewport={{ amount: 0.2, once: true }}
     >
       <Tilt
         options={defaultOptions}
         className="w-full aspect-square text-black flex shadow-md border backdrop-blur-lg border-white/10 shadow-black/10 flex-col gap-[16px] p-[24px] rounded-[12px] justify-between overflow-hidden bg-white"
       >
-        <div className="w-full justify-between flex items-center">
+        <div className=" w-full justify-between flex items-center">
           <div
             className={`${tagBgColor} px-[12px] py-[4px] text-[14px] rounded-[4px]`}
           >

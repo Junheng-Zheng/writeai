@@ -4,18 +4,16 @@ import PaymentCard from "../ui/Paymentcard";
 
 const Payment = () => {
   return (
-    <div className="overflow-hidden relative rounded-t-[var(--radius-25)] gap-[var(--space-25)] sm:gap-[var(--space-50)] py-[var(--space-50)] px-[var(--space-25)] sm:px-[var(--space-100)] w-full flex flex-col flex-1 payment-bg items-center justify-center">
-      <img
-        src="/assets/noise.jpeg"
-        alt="landingbg"
-        className="absolute top-0 left-0 w-full h-full opacity-4 object-cover"
-      />
-      <h4 className="sm:text-[65px] text-[42px] text-white font-bold">
+    <div className="w-full flex flex-col items-center relative text-black rounded-t-[24px] border-t border-black/10 justify-center gap-[48px] p-[48px] ">
+      <h4 className="sm:text-[56px] text-[42px]  font-semibold">
         Find your Plan.
       </h4>
+      <div className="absolute top-0 left-0 w-full h-full px-[96px]">
+        <div className="w-full h-full border-l border-r border-black/10"></div>
+      </div>
       <ToggleProvider>
         <Toggle />
-        <div className="flex gap-[var(--space-20)] sm:flex-row flex-col items-end">
+        <div className="flex gap-[24px] z-20 sm:flex-row flex-col items-end">
           <PaymentCard
             tier="Free"
             price="0"
@@ -26,10 +24,11 @@ const Payment = () => {
               "Share & Collaborate",
               "Up to 15 References",
             ]}
-            background="paymentcard-bg-secondary"
+            background="bg-white"
             image="/assets/example.png"
             buttontext="Get Started"
             delay={0.0}
+            className="border border-black/10 overflow-hidden"
           />
           <div className="w-full pb-[var(--space-20)]">
             <PaymentCard
@@ -42,26 +41,28 @@ const Payment = () => {
                 "Priority support",
               ]}
               buttontype="primary"
-              background="paymentcard-bg-primary"
+              background="white"
               image="/assets/example.png"
               delay={0.1}
               buttontext="Subscribe"
+              className="border border-black/10 overflow-hidden"
             />
           </div>
           <PaymentCard
             tier="Write"
             price="25"
-            buttontype="primary"
+            buttontype="secondary"
             bulletpoints={[
               "Everything in Pro",
               "Unlimited reference imports",
               "Advanced rewrite & tone adjustment",
               "Priority support",
             ]}
-            background="paymentcard-bg-secondary"
+            background="bg-white"
             image="/assets/example.png"
             buttontext="Subscribe"
             delay={0.2}
+            className="border border-black/10 overflow-hidden"
           />
         </div>
       </ToggleProvider>

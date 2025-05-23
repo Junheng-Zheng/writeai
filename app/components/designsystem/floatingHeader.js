@@ -1,21 +1,46 @@
-import Search from "../ui/Search";
-import Button from "./button";
+import { useEffect, useState, useRef } from "react";
+import { motion } from "framer-motion";
 import Link from "next/link";
+import Button from "./button";
 
 const FloatingHeader = () => {
+  const [scrolled, setScrolled] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setScrolled(scrollPosition > 20);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <div className="z-20 w-full p-[24px] h-fit">
-      <div className=" border-r border-t bg-white items-center border-white/20 py-[16px] px-[24px] rounded-[24px] flex w-full justify-between">
-        <div className="w-full">
-          <div className="text-[16px] w-[40px] flex items-center justify-center rainbow-radial aspect-square rounded-full font-bold ">
+    <div
+      ref={ref}
+      className={`z-30 w-full sticky flex justify-center top-0 p-[24px] border-b h-fit ${
+        scrolled ? "bg-black/10 backdrop-blur-md" : "bg-transparent  "
+      } transition-all duration-300`}
+    >
+      <div
+        className={`border-r border-t bg-white transition-all duration-300 items-center border-white/20 py-[16px] px-[24px] rounded-[24px] flex justify-between ${
+          scrolled ? "w-[90%]" : "w-full"
+        }`}
+      >
+        <div className="w-full flex items-center gap-[12px]">
+          <div className="text-[16px] w-[40px] flex items-center justify-center rainbow-radial aspect-square rounded-full font-bold">
             W
           </div>
+          <hr className="w-[1px] h-[28px] bg-black" />
+          <span>WRITELY</span>
         </div>
         {/* <button className="text-[18px] py-[12px] px-[24px] border border-white  rounded-full">
               <p>View Demo {"->"}</p>
             </button> */}
         {/* <Search placeholder={"Search"} className="sm:flex hidden text-[14px]" /> */}
-        <div className="sm:flex hidden  items-center w-full gap-[36px] justify-end">
+        <div className="sm:flex hidden items-center w-full gap-[36px] justify-end">
           <p>About</p>
           <p>Contact</p>
           <Link href="https://us-east-2wosz12rja.auth.us-east-2.amazoncognito.com/login/continue?client_id=7vb6ksijcjvgve65fs0htb9ao4&redirect_uri=https%3A%2F%2Fwriteai-five.vercel.app%2Fdashboard&response_type=code&scope=email+openid+phone">
@@ -25,9 +50,9 @@ const FloatingHeader = () => {
           </Link>
         </div>
         <div className="flex w-[24px] sm:hidden flex-col items-center gap-[7px]">
-          <hr className="w-full h-[3px] rounded-full bg-white" />
-          <hr className="w-full h-[3px] rounded-full bg-white" />
-          <hr className="w-full h-[3px] rounded-full bg-white" />
+          <hr className="w-full h-[3px] rounded-full bg-black" />
+          <hr className="w-full h-[3px] rounded-full bg-black" />
+          <hr className="w-full h-[3px] rounded-full bg-black" />
         </div>
       </div>
     </div>
