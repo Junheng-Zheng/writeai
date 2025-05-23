@@ -7,8 +7,12 @@ const FloatingHeader = () => {
   const [scrolled, setScrolled] = useState(false);
   const ref = useRef(null);
   // Check if the website is being hosted locally
-  const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-  
+  const [isLocal, setIsLocal] = useState(false);
+
+  useEffect(() => {
+    // Only runs on the client
+    setIsLocal(window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+  }, []);  
   // Construct the URL based on environment
   const redirectUri = isLocal
     ? 'http://localhost:3000/dashboard'
