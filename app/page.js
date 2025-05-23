@@ -16,7 +16,7 @@ const Page = () => {
       <FloatingHeader />
       <div className="w-full h-fit flex flex-col items-center justify-center bg-white ">
         <div className="sm:p-[24px] px-[24px] py-[48px] flex-1 w-full">
-          <div className="sm:rainbow-radial w-full flex flex-col sm:p-[72px]  pb-[0px] items-center gap-[24px] sm:gap-[48px] h-full rounded-[24px]">
+          <div className="rainbow-radial w-full flex flex-col sm:p-[72px] sm:pb-[0px] items-center gap-[24px] sm:gap-[48px] h-full rounded-[24px]">
             <div className="flex w-full flex-col h-full justify-center items-center gap-[24px] sm:gap-[16px]">
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
@@ -73,7 +73,7 @@ const Page = () => {
               <img
                 src="/assets/example.png"
                 alt="example"
-                className="object-cover sm:w-[70%] sm:h-full h-[200px] sm:object-top object-left-top rounded-t-[12px]"
+                className="object-cover sm:w-[70%] sm:h-full h-[200px] sm:object-top object-left-top sm:rounded-t-[12px] border border-black/10"
               />
             </div>
           </div>
