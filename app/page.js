@@ -30,7 +30,7 @@ const Page = () => {
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: 0.1 }}
-                className=" font-semibold sm:text-[64px] text-center text-[32px] text-black !leading-[1.2] tracking-[-1.2px]"
+                className=" font-semibold sm:text-[64px] text-center text-[36px] text-black !leading-[1.2] tracking-[-1.2px]"
               >
                 WRITING + AI FOR STUDENTS
               </motion.h1>
