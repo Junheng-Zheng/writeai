@@ -38,7 +38,7 @@ const Page = () => {
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: 0.2 }}
-                className="sm:text-[21px]  text-center !leading-[1.2] text-black"
+                className="sm:text-[21px] text-[18px] text-center !leading-[1.2] text-black"
               >
                 Autocomplete. Real-time Collaboration. Undetectable - Say
                 goodbye to docs.
