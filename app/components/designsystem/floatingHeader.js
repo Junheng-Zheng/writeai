@@ -14,7 +14,7 @@ const FloatingHeader = () => {
     ? 'http://localhost:3000/dashboard'
     : 'https://writeai-five.vercel.app/dashboard';
 
-  const loginUrl = `https://us-east-2wosz12rja.auth.us-east-2.amazoncognito.com/login/continue?client_id=7vb6ksijcjvgve65fs0htb9ao4&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=code&scope=email+openid+phone`;
+  const loginUrl = `https://us-east-2wosz12rja.auth.us-east-2.amazoncognito.com/login/continue?client_id=7vb6ksijcjvgve65fs0htb9ao4&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=code&scope=email+openid+phone+profile`;
 
   useEffect(() => {
     const handleScroll = () => {
