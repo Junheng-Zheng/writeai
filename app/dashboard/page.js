@@ -13,7 +13,7 @@ export default function DashboardPage() {
         try {
         // Step 1: Try to exchange the code if it's in the URL
         if (code) {
-            const tokenRes = await fetch('/api/auth/token', {
+            const tokenRes = await fetch('/backend/api/auth/token', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ code }),
@@ -31,7 +31,7 @@ export default function DashboardPage() {
         }
 
         // Step 2: Always try to load from cookie
-        const meRes = await fetch('/api/auth/me', {
+        const meRes = await fetch('/backend/api/auth/me', {
             method: 'GET',
             credentials: 'include',
         });
