@@ -1,5 +1,5 @@
-'use client';
-import { useEffect, useState } from 'react';
+"use client";
+import { useEffect, useState } from "react";
 
 export default function DashboardPage() {
   const [user, setUser] = useState(null);
@@ -10,42 +10,42 @@ export default function DashboardPage() {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    const code = params.get('code');
+    const code = params.get("code");
 
     async function fetchTokensAndUser() {
       try {
         if (code) {
-          const tokenRes = await fetch('/api/auth/token', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+          const tokenRes = await fetch("/api/auth/token", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ code }),
-            credentials: 'include',
+            credentials: "include",
           });
 
           if (tokenRes.ok) {
             const newUrl = new URL(window.location.href);
-            newUrl.searchParams.delete('code');
-            window.history.replaceState({}, '', newUrl);
+            newUrl.searchParams.delete("code");
+            window.history.replaceState({}, "", newUrl);
           } else {
-            console.warn('Token exchange failed, falling back to cookie.');
+            console.warn("Token exchange failed, falling back to cookie.");
           }
         }
 
-        const meRes = await fetch('/api/auth/me', {
-          method: 'GET',
-          credentials: 'include',
+        const meRes = await fetch("/api/auth/me", {
+          method: "GET",
+          credentials: "include",
         });
 
         if (!meRes.ok) {
           const errData = await meRes.json();
-          setError(errData.error || 'Failed to fetch user info');
+          setError(errData.error || "Failed to fetch user info");
           return;
         }
 
         const userInfo = await meRes.json();
         setUser(userInfo);
       } catch (err) {
-        setError('Network error');
+        setError("Network error");
       }
     }
 
@@ -71,15 +71,15 @@ export default function DashboardPage() {
 
       if (response.ok) {
         setStatus("Upload successful!");
-        alert("Upload successful")
+        alert("Upload successful");
       } else {
         setStatus(`Upload failed: ${data?.error || "Unknown error"}`);
-        alert("Upload failed")
+        alert("Upload failed");
       }
     } catch (err) {
       console.error("Upload failed:", err);
       setStatus("Upload failed (network error)");
-      alert("Upload failed")
+      alert("Upload failed");
     } finally {
       setUploading(false);
     }
@@ -93,17 +93,19 @@ export default function DashboardPage() {
     setUploading(true);
     await handleFileUpload(selectedFile);
     setUploading(false);
-    
   }
 
-  if (error) return <p style={{ color: 'red' }}>Error: {error}</p>;
+  if (error) return <p style={{ color: "red" }}>Error: {error}</p>;
   if (!user) return <p>Loading user info...</p>;
 
   return (
     <div>
-      <h1>Welcome, {user.name?.split(' ')[0] || user.email || user['cognito:username']}</h1>
+      <h1>
+        Welcome,{" "}
+        {user.name?.split(" ")[0] || user.email || user["cognito:username"]}
+      </h1>
       <p>Email: {user.email}</p>
-      <p>Username: {user['cognito:username']}</p>
+      <p>Username: {user["cognito:username"]}</p>
 
       <hr />
 

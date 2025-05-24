@@ -1,6 +1,6 @@
 import formidable from "formidable";
 import fs from "fs";
-import { uploadToS3 } from "/pages/aws/uploadToS3";
+import { uploadToS3 } from "/utils/aws/uploadToS3";
 
 export const config = {
   api: {
@@ -25,7 +25,9 @@ export default async function handler(req, res) {
   }
 
   const cookies = req.headers.cookie || "";
-  const idTokenCookie = cookies.split("; ").find(c => c.startsWith("id_token="));
+  const idTokenCookie = cookies
+    .split("; ")
+    .find((c) => c.startsWith("id_token="));
   if (!idTokenCookie) {
     return res.status(401).json({ error: "Missing token" });
   }

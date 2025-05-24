@@ -1,4 +1,7 @@
-import { CognitoIdentityClient, GetIdCommand } from "@aws-sdk/client-cognito-identity";
+import {
+  CognitoIdentityClient,
+  GetIdCommand,
+} from "@aws-sdk/client-cognito-identity";
 import { fromCognitoIdentityPool } from "@aws-sdk/credential-provider-cognito-identity";
 
 export async function getAWSCredentialsAndIdentityId(idToken) {
