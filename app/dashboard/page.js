@@ -10,6 +10,7 @@ export default function DashboardPage() {
   const [uploading, setUploading] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
   const [status, setStatus] = useState("");
+  const [files, setFiles] = useState([]);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -53,9 +54,9 @@ export default function DashboardPage() {
     }
 
     fetchTokensAndUser();
+    handleListFiles();
   }, []);
 
-  // Move helper functions outside of useEffect
   async function handleFileUpload(file) {
     const formData = new FormData();
     formData.append("file", file);
@@ -85,8 +86,36 @@ export default function DashboardPage() {
       alert("Upload failed");
     } finally {
       setUploading(false);
+      handleListFiles();
     }
   }
+ 
+  async function handleListFiles() {
+    try {
+      setUploading(true);
+
+      const response = await fetch("/api/aws/list", {
+        method: "GET",
+        credentials: "include", // ensures cookies (like id_token) are sent
+      });
+
+      const data = await response.json();
+      console.log("List response:", data);
+
+      if (response.ok) {
+        setFiles(data.files);
+
+      } else {
+        alert(`Failed to list files: ${data?.error || "Unknown error"}`);
+      }
+    } catch (err) {
+      console.error("List failed:", err);
+      alert("Failed to list files (network error)");
+    } finally {
+      setUploading(false);
+    }
+  }
+
 
   async function onUploadClick() {
     if (!selectedFile) {
@@ -105,7 +134,7 @@ export default function DashboardPage() {
         Loading user info...
       </div>
     );
-
+  
   return (
     <div>
       <DashboardHeader />
@@ -139,41 +168,20 @@ export default function DashboardPage() {
               <i className="fa-solid fa-plus text-[24px] "></i>
               <p>New Document</p>
             </div>
-            <DocCard
-              title={"Untitled Doc"}
-              contributors={[
-                "John Doe",
-                "Jane Doe",
-                "John Smith",
-                "Jane Smith",
-              ]}
-              created={"2/2/23"}
-              updated={"2/2/23"}
-            />
-            <DocCard
-              title={"Untitled Doc"}
-              contributors={["Fiona"]}
-              created={"3/2/23"}
-              updated={"3/2/23"}
-            />
-            <DocCard
-              title={"Untitled Doc"}
-              contributors={["Fiona"]}
-              created={"3/2/23"}
-              updated={"3/2/23"}
-            />
-            <DocCard
-              title={"Untitled Doc"}
-              contributors={["Fiona"]}
-              created={"3/2/23"}
-              updated={"3/2/23"}
-            />
-            <DocCard
-              title={"Untitled Doc"}
-              contributors={["Fiona"]}
-              created={"3/2/23"}
-              updated={"3/2/23"}
-            />
+            {files.map((file) => (
+              <DocCard
+                title={`${file.key.split('/').pop()} - ${Math.round(file.size / 1024)} KB`}
+                contributors={[
+                  "John Doe",
+                  "Jane Doe",
+                  "John Smith",
+                  "Jane Smith",
+                ]}
+                created={"2/2/23"}
+                updated={new Date(file.lastModified).toLocaleDateString()}
+              />
+            ))}
+            
           </div>
         </div>
       </div>
