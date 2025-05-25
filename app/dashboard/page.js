@@ -89,7 +89,7 @@ export default function DashboardPage() {
       handleListFiles();
     }
   }
- 
+
   async function handleListFiles() {
     try {
       setUploading(true);
@@ -104,7 +104,6 @@ export default function DashboardPage() {
 
       if (response.ok) {
         setFiles(data.files);
-
       } else {
         alert(`Failed to list files: ${data?.error || "Unknown error"}`);
       }
@@ -115,7 +114,6 @@ export default function DashboardPage() {
       setUploading(false);
     }
   }
-
 
   async function onUploadClick() {
     if (!selectedFile) {
@@ -134,7 +132,7 @@ export default function DashboardPage() {
         Loading user info...
       </div>
     );
-  
+
   return (
     <div>
       <DashboardHeader />
@@ -170,7 +168,10 @@ export default function DashboardPage() {
             </div>
             {files.map((file) => (
               <DocCard
-                title={`${file.key.split('/').pop()} - ${Math.round(file.size / 1024)} KB`}
+                key={file.key}
+                title={`${file.key.split("/").pop()} - ${Math.round(
+                  file.size / 1024
+                )} KB`}
                 contributors={[
                   "John Doe",
                   "Jane Doe",
@@ -181,7 +182,6 @@ export default function DashboardPage() {
                 updated={new Date(file.lastModified).toLocaleDateString()}
               />
             ))}
-            
           </div>
         </div>
       </div>
