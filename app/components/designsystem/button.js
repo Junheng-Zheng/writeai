@@ -1,6 +1,13 @@
 import React from "react";
 
-const Button = ({ children, className, size, variant }) => {
+const Button = ({
+  children,
+  className,
+  size,
+  variant,
+  arrow = true,
+  onClick,
+}) => {
   const sizeStyles = {
     small: "py-[12px] text-[14px] px-[24px]",
     medium: "py-[12px] text-[16px] px-[24px]",
@@ -14,10 +21,11 @@ const Button = ({ children, className, size, variant }) => {
   };
   return (
     <button
+      onClick={onClick}
       className={`${className} glow-container justify-center rounded-full flex items-center  gap-[8px]    ${variantStyles[variant]} ${sizeStyles[size]}`}
     >
       {children}
-      <span className="text-[16px] font-inter">{"->"}</span>
+      {arrow && <span className="text-[16px] font-inter">{"->"}</span>}
     </button>
   );
 };

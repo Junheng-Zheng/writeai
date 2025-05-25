@@ -1,6 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
-
+import DashboardHeader from "../components/designsystem/dashboardHeader";
+import Button from "../components/designsystem/button";
+import Dropdown from "../components/ui/Dropdown";
+import DocCard from "../components/designsystem/docCard";
 export default function DashboardPage() {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
@@ -96,20 +99,16 @@ export default function DashboardPage() {
   }
 
   if (error) return <p style={{ color: "red" }}>Error: {error}</p>;
-  if (!user) return <p>Loading user info...</p>;
+  if (!user)
+    return (
+      <div className="flex justify-center items-center h-screen">
+        Loading user info...
+      </div>
+    );
 
   return (
     <div>
-      <h1>
-        Welcome,{" "}
-        {user.name?.split(" ")[0] || user.email || user["cognito:username"]}
-      </h1>
-      <p>Email: {user.email}</p>
-      <p>Username: {user["cognito:username"]}</p>
-
-      <hr />
-
-      <h2>Upload a File</h2>
+      <DashboardHeader />
       <input
         type="file"
         onChange={(e) => setSelectedFile(e.target.files[0])}
@@ -118,6 +117,66 @@ export default function DashboardPage() {
       <button onClick={onUploadClick} disabled={uploading}>
         {uploading ? "Uploading..." : "Upload File"}
       </button>
+      <div className="flex flex-col px-[36px]">
+        <div className="flex flex-col gap-[24px] p-[36px] border-l border-r border-black/10">
+          <div className="pb-[24px] border-b border-black/10 flex justify-between items-center">
+            <h1 className="text-[24px]">
+              Welcome back,{" "}
+              {user.name?.split(" ")[0] ||
+                user.email ||
+                user["cognito:username"]}
+            </h1>
+            {/* <pre>{JSON.stringify(user, null, 2)}</pre> */}
+            <div className="flex items-center gap-[24px]">
+              <Button variant={"tertiary"} size={"medium"} arrow={false}>
+                Recent
+              </Button>
+              <i className="fa-solid fa-arrow-down-a-z"></i>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-5  gap-[24px]">
+            <div className="aspect-[8/11.5] border cursor-pointer hover:bg-black/5 text-black/30 flex-col gap-[24px] border-black/10 flex items-center justify-center">
+              <i className="fa-solid fa-plus text-[24px] "></i>
+              <p>New Document</p>
+            </div>
+            <DocCard
+              title={"Untitled Doc"}
+              contributors={[
+                "John Doe",
+                "Jane Doe",
+                "John Smith",
+                "Jane Smith",
+              ]}
+              created={"2/2/23"}
+              updated={"2/2/23"}
+            />
+            <DocCard
+              title={"Untitled Doc"}
+              contributors={["Fiona"]}
+              created={"3/2/23"}
+              updated={"3/2/23"}
+            />
+            <DocCard
+              title={"Untitled Doc"}
+              contributors={["Fiona"]}
+              created={"3/2/23"}
+              updated={"3/2/23"}
+            />
+            <DocCard
+              title={"Untitled Doc"}
+              contributors={["Fiona"]}
+              created={"3/2/23"}
+              updated={"3/2/23"}
+            />
+            <DocCard
+              title={"Untitled Doc"}
+              contributors={["Fiona"]}
+              created={"3/2/23"}
+              updated={"3/2/23"}
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
