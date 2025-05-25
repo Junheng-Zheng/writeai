@@ -13,6 +13,7 @@ export default function DashboardPage() {
   const [files, setFiles] = useState([]);
 
   useEffect(() => {
+  async function init() {
     const params = new URLSearchParams(window.location.search);
     const code = params.get("code");
 
@@ -43,19 +44,27 @@ export default function DashboardPage() {
         if (!meRes.ok) {
           const errData = await meRes.json();
           setError(errData.error || "Failed to fetch user info");
-          return;
+          return null;
         }
 
         const userInfo = await meRes.json();
         setUser(userInfo);
+        return userInfo;
       } catch (err) {
         setError("Network error");
+        return null;
       }
     }
 
-    fetchTokensAndUser();
-    handleListFiles();
-  }, []);
+    const fetchedUser = await fetchTokensAndUser();
+
+    if (fetchedUser) {
+      await handleListFiles();
+    }
+  }
+
+  init();
+}, []);
 
   async function handleFileUpload(file) {
     const formData = new FormData();
