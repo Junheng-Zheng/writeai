@@ -39,7 +39,7 @@ const Tiltcard = ({
           </div>
         </div>
         <div className="flex flex-col gap-[16px]">
-          <h1 className="text-[21px] font-satoshi font-bold">{title}</h1>
+          <h1 className="text-[21px] font-satoshi font-medium">{title}</h1>
           <p className="text-[14px]">{description}</p>
           <div className="flex w-full justify-end items-center gap-[12px]">
             <Button variant="tertiary" size="medium">

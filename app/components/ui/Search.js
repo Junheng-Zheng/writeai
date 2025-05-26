@@ -6,10 +6,11 @@ const Search = ({
   placeholder,
   className,
   symbol = "Search",
+  onClick,
 }) => {
   return (
     <div
-      className={`${className} relative border-[1px] border-black/20 rounded-full w-full  px-[24px] flex py-[12px]`}
+      className={`relative border-[1px] border-black/20 rounded-full w-full py-[12px] px-[24px] flex ${className} `}
     >
       <input
         type="text"
@@ -18,9 +19,9 @@ const Search = ({
         placeholder={placeholder}
         className="outline-none w-full text-black bg-transparent placeholder:text-black/30"
       />
-      <button className="cursor-pointer">
+      <button className="cursor-pointer" onClick={onClick}>
         {symbol === "Search" && (
-          <i className="fa-solid  fa-magnifying-glass"></i>
+          <i className="fa-solid fa-magnifying-glass"></i>
         )}
         {symbol === "Add" && <i className="fa-solid  fa-plus"></i>}
       </button>

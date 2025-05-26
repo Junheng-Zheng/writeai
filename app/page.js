@@ -16,7 +16,7 @@ const Page = () => {
       <FloatingHeader />
       <div className="w-full h-fit flex flex-col items-center justify-center bg-white ">
         <div className="sm:p-[48px] flex-1 w-full">
-          <div className="rainbow-radial px-[24px] py-[48px] pb-[0px] w-full flex flex-col sm:p-[96px] sm:pb-[0px] items-center gap-[24px] sm:gap-[48px] h-full sm:rounded-[24px]">
+          <div className="rainbow-linear px-[24px] py-[48px] pb-[0px] w-full flex flex-col sm:p-[96px] sm:pb-[0px] items-center gap-[24px] sm:gap-[48px] h-full sm:rounded-[24px]">
             <div className="flex w-full flex-col h-full justify-center items-center gap-[24px] sm:gap-[16px]">
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
@@ -71,9 +71,9 @@ const Page = () => {
             </div>
             <div className="w-full flex justify-center items-center">
               <img
-                src="/assets/example.png"
+                src="https://media.discordapp.net/attachments/1048639613876568134/1376234939581857963/image.png?ex=6834962a&is=683344aa&hm=ff67dc125d440571b93dace569c5d4d9fe65e9175a2269d0f10871d7d7310833&=&format=webp&quality=lossless&width=2676&height=1444"
                 alt="example"
-                className="object-cover sm:w-[70%] sm:h-full h-[200px] sm:object-top object-left-top sm:rounded-t-[12px] border border-black/10 border-b-0"
+                className="object-cover sm:w-[70%] sm:h-[300px] h-[200px] sm:object-top object-left-top  border border-black/10 border-b-0"
               />
             </div>
           </div>
