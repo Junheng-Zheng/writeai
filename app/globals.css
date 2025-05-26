@@ -360,3 +360,13 @@ body * {
     background-position: 0% 0%;
   }
 }
+
+@media (max-width: 768px) {
+  .rainbow-linear {
+    background: radial-gradient(
+      circle at 50% 100%,
+      #d690fe 10%,
+      transparent 55%
+    );
+  }
+}
