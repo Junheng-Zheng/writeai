@@ -1,4 +1,4 @@
-import { listFilesInS3 } from "/utils/aws/listFilesInS3";
+import { listFilesInS3 } from "../../../utils/aws/listFilesinS3";
 
 export const config = {
   api: {
