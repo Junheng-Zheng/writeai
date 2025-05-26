@@ -87,7 +87,7 @@ const FloatingHeader = () => {
         </button>
       </div>
       <div
-        className={`absolute bottom-0  shadow shadow-black/20 border-black/10 overflow-hidden transition-all duration-300 translate-y-full left-0 w-full  bg-white/75 backdrop-blur-sm ${
+        className={`absolute bottom-0  shadow shadow-black/20 border-black/10 overflow-hidden transition-all duration-300 translate-y-full left-0 w-full  bg-white/85 backdrop-blur-lg ${
           menuOpen ? "max-h-[50vh] " : "max-h-0"
         }`}
       >
