@@ -8,17 +8,22 @@ const FloatingHeader = () => {
   const ref = useRef(null);
   // Check if the website is being hosted locally
   const [isLocal, setIsLocal] = useState(false);
-
+  const [menuOpen, setMenuOpen] = useState(false);
   useEffect(() => {
     // Only runs on the client
-    setIsLocal(window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
-  }, []);  
+    setIsLocal(
+      window.location.hostname === "localhost" ||
+        window.location.hostname === "127.0.0.1"
+    );
+  }, []);
   // Construct the URL based on environment
   const redirectUri = isLocal
-    ? 'http://localhost:3000/dashboard'
-    : 'https://writeai-five.vercel.app/dashboard';
+    ? "http://localhost:3000/dashboard"
+    : "https://writeai-five.vercel.app/dashboard";
 
-  const loginUrl = `https://us-east-2wosz12rja.auth.us-east-2.amazoncognito.com/login/continue?client_id=7vb6ksijcjvgve65fs0htb9ao4&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=code&scope=email+openid+phone+profile`;
+  const loginUrl = `https://us-east-2wosz12rja.auth.us-east-2.amazoncognito.com/login/continue?client_id=7vb6ksijcjvgve65fs0htb9ao4&redirect_uri=${encodeURIComponent(
+    redirectUri
+  )}&response_type=code&scope=email+openid+phone+profile`;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -62,10 +67,45 @@ const FloatingHeader = () => {
             </Button>
           </Link>
         </div>
-        <div className="flex w-[24px] sm:hidden flex-col items-center gap-[7px]">
-          <hr className="w-full h-[3px] rounded-full bg-black" />
-          <hr className="w-full h-[3px] rounded-full bg-black" />
-          <hr className="w-full h-[3px] rounded-full bg-black" />
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="flex w-[24px] sm:hidden flex-col items-center justify-center gap-[4px] relative h-[16px]"
+        >
+          <span
+            className={`absolute w-full h-[2px] bg-black rounded-full transition-transform duration-300 ${
+              menuOpen ? "rotate-45 top-1/2" : "top-0"
+            }`}
+          />
+          {!menuOpen && (
+            <span className="absolute w-full h-[2px] bg-black rounded-full transition-opacity duration-300" />
+          )}
+          <span
+            className={`absolute w-full h-[2px] bg-black rounded-full transition-transform duration-300 ${
+              menuOpen ? "-rotate-45 top-1/2" : "bottom-0"
+            }`}
+          />
+        </button>
+      </div>
+      <div
+        className={`absolute bottom-0  shadow shadow-black/20 border-black/10 overflow-hidden transition-all duration-300 translate-y-full left-0 w-full  bg-white/75 backdrop-blur-sm ${
+          menuOpen ? "max-h-[50vh] " : "max-h-0"
+        }`}
+      >
+        <div className="p-[24px] border-b border-black/10">
+          <p>About</p>
+        </div>
+        <div className="p-[24px] border-b border-black/10">
+          <p>Contact</p>
+        </div>
+        <div className="p-[24px] border-b border-black/10">
+          <p>Demo</p>
+        </div>
+        <div className="p-[24px]">
+          <Link href={loginUrl}>
+            <Button size="medium" variant="secondary" className="w-full">
+              Login
+            </Button>
+          </Link>
         </div>
       </div>
     </div>
