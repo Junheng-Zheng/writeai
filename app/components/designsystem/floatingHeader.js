@@ -48,9 +48,13 @@ const FloatingHeader = () => {
         }`}
       >
         <div className="w-full flex items-center gap-[12px]">
-          <div className="text-[16px] w-[40px] flex items-center justify-center rainbow-radial aspect-square rounded-full font-bold">
+          {/* <div className="text-[16px] w-[40px] flex items-center justify-center rainbow-radial aspect-square rounded-full font-bold">
             W
-          </div>
+          </div> */}
+          <img
+            src="/assets/icon.png"
+            className="w-[40px] h-[40px] rounded-full"
+          />
           <hr className="w-[1px] h-[28px] bg-black" />
           <span>WRITELY</span>
         </div>
@@ -60,6 +64,7 @@ const FloatingHeader = () => {
         {/* <Search placeholder={"Search"} className="sm:flex hidden text-[14px]" /> */}
         <div className="sm:flex hidden items-center w-full gap-[36px] justify-end">
           <p>About</p>
+          <p>Pricing</p>
           <p>Contact</p>
           <Link href={loginUrl}>
             <Button size="medium" variant="secondary">
@@ -93,6 +98,9 @@ const FloatingHeader = () => {
       >
         <div className="p-[24px] border-b border-black/10">
           <p>About</p>
+        </div>
+        <div className="p-[24px] border-b border-black/10">
+          <p>Pricing</p>
         </div>
         <div className="p-[24px] border-b border-black/10">
           <p>Contact</p>

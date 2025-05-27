@@ -5,6 +5,9 @@ import { Slate, Editable, withReact } from "slate-react";
 import Dropdown from "../components/ui/Dropdown";
 import Button from "../components/designsystem/button";
 import Search from "../components/ui/Search";
+import AutocompleteToggle from "../components/designsystem/autocompleteToggle";
+import Counter from "../components/designsystem/counter";
+import FontFamilyDropdown from "../components/designsystem/fontFamilyDropdown";
 const initialValue = [
   {
     type: "paragraph",
@@ -172,21 +175,25 @@ const Page = () => {
               <i className=" fa-solid fa-print"></i>
               <i className="fa-solid fa-undo-alt"></i>
               <i className="fa-solid fa-redo-alt"></i>
-              <Button variant="tertiary" size="medium" arrow={false}>
-                Inter
-              </Button>
-              <Button
-                variant="tertiary"
-                size="medium"
-                arrow={false}
-                className="text-nowrap"
-              >
-                - 12 +
-              </Button>
-              <i className="fa-solid fa-bold"></i>
-              <i className="fa-solid fa-italic"></i>
-              <i className="fa-solid fa-underline"></i>
-              <i className="fa-solid fa-strikethrough"></i>
+              <FontFamilyDropdown />
+
+              <Counter />
+              <button
+                onClick={toggleBold}
+                className="fa-solid fa-bold hover:text-purple-500"
+              ></button>
+              <button
+                onClick={toggleItalic}
+                className="fa-solid fa-italic hover:text-purple-500"
+              ></button>
+              <button
+                onClick={toggleUnderline}
+                className="fa-solid fa-underline hover:text-purple-500"
+              ></button>
+              <button
+                onClick={toggleStrikethrough}
+                className="fa-solid fa-strikethrough hover:text-purple-500"
+              ></button>
               <p className="font-medium text-[18px] py-[0px] border-b-2 text-purple-500  border-purple-500">
                 A
               </p>
@@ -195,9 +202,18 @@ const Page = () => {
               </div>
               <i className="fa-solid fa-link"></i>
               <i className="fa-solid fa-image"></i>
-              <i className="fa-solid fa-align-left"></i>
-              <i className="fa-solid fa-align-center"></i>
-              <i className="fa-solid fa-align-right"></i>
+              <button
+                onClick={() => changeAlign("left")}
+                className="fa-solid fa-align-left hover:text-purple-500"
+              ></button>
+              <button
+                onClick={() => changeAlign("center")}
+                className="fa-solid fa-align-center hover:text-purple-500"
+              ></button>
+              <button
+                onClick={() => changeAlign("right")}
+                className="fa-solid fa-align-right hover:text-purple-500"
+              ></button>
               <i className="fa-solid fa-list-ul"></i>
               <i className="fa-solid fa-list-ol"></i>
               {!isSidebarOpen && (
@@ -207,20 +223,7 @@ const Page = () => {
                   placeholder="Got a question?"
                 />
               )}
-              <div className="flex flex-col relative">
-                <div className="absolute top-0 right-0 -translate-y-full bg-white text-black/50 text-[14px] p-2 border border-black/10 border-b-0 w-fit rounded-t-[12px]">
-                  Autocomplete
-                </div>
-                <div className="w-[144px] relative  rounded-full rounded-tr-none border border-black/10 overflow-hidden flex">
-                  <div className="absolute top-0 left-0 w-[50%] border-4 border-white rounded-full h-full bg-black"></div>
-                  <div className="w-full h-full py-[12px] z-10 text-white flex items-center justify-center">
-                    On
-                  </div>
-                  <div className="w-full h-full py-[12px] z-10  flex items-center justify-center">
-                    Off
-                  </div>
-                </div>
-              </div>
+              <AutocompleteToggle />
             </div>
           </div>
         </div>
@@ -271,7 +274,7 @@ const Page = () => {
             ref={editorRef}
             className="w-[8.5in] h-[11in] p-[1in] border border-black/10 focus:outline-none"
             renderLeaf={renderLeaf}
-            placeholder="&#8984;/cmd L for options..."
+            placeholder=""
             onKeyDown={(event) => {
               if (
                 (event.ctrlKey || event.metaKey) &&

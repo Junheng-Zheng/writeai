@@ -5,9 +5,14 @@ const Footer = () => {
       <div className="w-full p-[48px] flex justify-between  border-t border-black/10">
         <div className="w-full  flex flex-col gap-[24px]">
           <div className="flex items-center gap-[16px]">
-            <div className="text-[21px] w-[56px] flex items-center justify-center rainbow-radial aspect-square rounded-full font-bold ">
+            {/* <div className="text-[21px] w-[56px] flex items-center justify-center rainbow-radial aspect-square rounded-full font-bold ">
               W
-            </div>
+            </div> */}
+            <img
+              src="/assets/icon.png"
+              alt="Writely Logo"
+              className="w-[64px] h-[64px] rounded-full"
+            />
             <span className="text-[64px] font-semibold">WRITELY.WORK</span>
           </div>
           <p className="text-[14px]">
@@ -36,7 +41,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="text-[14px] w-full p-[48px] flex justify-between ">
+      <div className="text-[14px] w-full p-[48px] flex justify-between items-center">
         <div className="w-full flex flex-col ">
           <div className="flex items-center p-[12px] px-[16px] rounded-full border border-black/10 w-fit bg-gray-100 gap-[12px]">
             <i className="fa-solid fa-circle glow-container text-[rgb(54,222,48)] text-yellow-500"></i>

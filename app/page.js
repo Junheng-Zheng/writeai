@@ -63,9 +63,15 @@ const Page = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: 0.3 }}
                 >
-                  <Button size="large" variant="primary" className="w-[175px]">
-                    Sign up
-                  </Button>
+                  <Link href="https://us-east-2wosz12rja.auth.us-east-2.amazoncognito.com/signup?client_id=7vb6ksijcjvgve65fs0htb9ao4&redirect_uri=https%3A%2F%2Fwriteai-five.vercel.app%2Fdashboard&response_type=code&scope=email+openid+phone+profile">
+                    <Button
+                      size="large"
+                      variant="primary"
+                      className="w-[175px]"
+                    >
+                      Sign up
+                    </Button>
+                  </Link>
                 </motion.div>
               </div>
             </div>
