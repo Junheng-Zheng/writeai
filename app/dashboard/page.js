@@ -43,6 +43,24 @@ export default function DashboardPage() {
 
         if (!meRes.ok) {
           const errData = await meRes.json();
+
+          if (meRes.status === 401) {
+            const isLocalhost =
+              window.location.hostname === "localhost" ||
+              window.location.hostname === "127.0.0.1";
+
+            const redirectUri = isLocalhost
+              ? "http://localhost:3000/dashboard"
+              : "https://writeai-five.vercel.app/dashboard";
+
+            const loginUrl = `https://us-east-2wosz12rja.auth.us-east-2.amazoncognito.com/login?client_id=7vb6ksijcjvgve65fs0htb9ao4&redirect_uri=${encodeURIComponent(
+              redirectUri
+            )}&response_type=code&scope=email+openid+phone+profile`;
+
+            window.location.href = loginUrl;
+            return;
+          }
+
           setError(errData.error || "Failed to fetch user info");
           return null;
         }

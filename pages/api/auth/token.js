@@ -43,12 +43,16 @@ export default async function handler(req, res) {
 
     // Set cookies (Express-style)
     res.setHeader("Set-Cookie", [
+      // Stores for 1 Hour
       `id_token=${data.id_token}; HttpOnly; Path=/; Secure; SameSite=Lax; Max-Age=3600`,
       `access_token=${data.access_token}; HttpOnly; Path=/; Secure; SameSite=Lax; Max-Age=3600`,
+      // Stores for 30 days
+      `refresh_token=${data.refresh_token}; HttpOnly; Secure; Path=/; SameSite=Lax; Max-Age=${60 * 60 * 24 * 30}`
     ]);
 
     return res.status(200).json(data);
   } catch (err) {
+    console.log(err);
     return res.status(500).json({ error: "Internal Server Error" });
   }
 }
