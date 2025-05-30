@@ -182,7 +182,7 @@ const Page = () => {
             </div>
             <div className="w-full flex justify-center items-center">
               <img
-                src="https://media.discordapp.net/attachments/1048639613876568134/1376234939581857963/image.png?ex=6834962a&is=683344aa&hm=ff67dc125d440571b93dace569c5d4d9fe65e9175a2269d0f10871d7d7310833&=&format=webp&quality=lossless&width=2676&height=1444"
+                src="assets/textEditor.png"
                 alt="example"
                 className="object-cover sm:w-[80%] sm:h-[300px] h-[200px] sm:object-top object-left-top  border border-black/10 border-b-0"
               />
