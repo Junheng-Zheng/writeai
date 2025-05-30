@@ -22,7 +22,7 @@ const InfoContent = ({ title, children, position = "right", className }) => {
           <p className="text-[18px] text-black">{children}</p>
           <div className="flex w-full justify-start">
             <Button variant="secondary" size="medium">
-              <p>{"Explore Writely"}</p>
+              <p>{"Explore Writo"}</p>
             </Button>
           </div>
         </div>

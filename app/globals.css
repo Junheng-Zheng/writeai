@@ -361,12 +361,9 @@ body * {
   }
 }
 
-@media (max-width: 768px) {
-  .rainbow-linear {
-    background: radial-gradient(
-      circle at 50% 100%,
-      #d690fe 10%,
-      transparent 55%
-    );
-  }
+/* @media (max-width: 768px) { */
+.rainbow-linear {
+  background: radial-gradient(ellipse at 50% 100%, #d690fe 10%, transparent 55%),
+    radial-gradient(ellipse at 150% 0%, #dea5ff68 5%, transparent 55%);
 }
+/* } */

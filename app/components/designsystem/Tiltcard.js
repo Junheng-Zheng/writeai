@@ -16,6 +16,7 @@ const Tiltcard = ({
   tagColor,
   tagBgColor,
   delay,
+  className,
 }) => {
   return (
     <motion.div
@@ -26,7 +27,7 @@ const Tiltcard = ({
     >
       <Tilt
         options={defaultOptions}
-        className="w-full sm:aspect-square text-black flex shadow-md border backdrop-blur-lg border-white/10 shadow-black/10 flex-col gap-[16px] p-[24px] rounded-[12px] justify-between overflow-hidden bg-white"
+        className={`w-full sm:aspect-square text-black flex shadow-md border backdrop-blur-lg border-white/10 shadow-black/10 flex-col gap-[16px] p-[24px] rounded-[12px] justify-between overflow-hidden bg-white ${className}`}
       >
         <div className=" w-full justify-between flex items-center">
           <div

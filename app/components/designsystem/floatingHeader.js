@@ -56,7 +56,7 @@ const FloatingHeader = () => {
             className="w-[40px] h-[40px] rounded-full"
           />
           <hr className="w-[1px] h-[28px] bg-black" />
-          <span>WRITELY</span>
+          <span>WRITO</span>
         </div>
         {/* <button className="text-[18px] py-[12px] px-[24px] border border-white  rounded-full">
               <p>View Demo {"->"}</p>
