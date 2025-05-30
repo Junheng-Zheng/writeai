@@ -165,6 +165,7 @@ export default function DashboardPage() {
       <DashboardHeader />
       <input
         type="file"
+        accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.pdf,application/pdf,.txt,text/plain"
         onChange={(e) => setSelectedFile(e.target.files[0])}
         disabled={uploading}
       />
