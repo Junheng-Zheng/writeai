@@ -195,18 +195,17 @@ export default function DashboardPage() {
             </div>
             {files.map((file) => (
               <DocCard
-                key={file.key}
-                title={`${file.key.split("/").pop()} - ${Math.round(
-                  file.size / 1024
-                )} KB`}
+                key={file.id}
+                title={`${file.name} - ${Math.round(file.size / 1024)} KB`}
                 contributors={[
                   "John Doe",
                   "Jane Doe",
                   "John Smith",
                   "Jane Smith",
                 ]}
-                created={"2/2/23"}
-                updated={new Date(file.lastModified).toLocaleDateString()}
+                created={file.creationDate ? new Date(file.creationDate).toLocaleDateString() : "N/A"}
+                updated={file.lastModified ? new Date(file.lastModified).toLocaleDateString() : "N/A"}
+                opened={file.lastOpened ? new Date(file.lastOpened).toLocaleDateString() : "N/A"}
               />
             ))}
           </div>

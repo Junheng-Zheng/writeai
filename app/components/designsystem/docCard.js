@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Button from "./button";
 import Search from "../ui/Search";
-export default function DocCard({ title, contributors, created, updated }) {
+export default function DocCard({ title, contributors, created, updated, opened }) {
   const [getSettings, setSettings] = useState(false);
   const [addContributor, setAddContributor] = useState(false);
   const [isSummarizing, setIsSummarizing] = useState(false);
@@ -95,7 +95,7 @@ export default function DocCard({ title, contributors, created, updated }) {
               {title}
             </p>
           </div>
-          <p className="text-[12px]">Opened 2/2/23</p>
+          <p className="text-[12px]">{opened}</p>
         </div>
         <i
           onClick={() => setSettings(!getSettings)}

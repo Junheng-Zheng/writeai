@@ -1,4 +1,4 @@
-import { listFilesInS3 } from "../../../utils/aws/listFilesinS3";
+import { listFilesInDynamoDB } from "../../../utils/aws/listFilesinDynamo";
 
 export const config = {
   api: {
@@ -21,7 +21,7 @@ export default async function handler(req, res) {
   const idToken = idTokenCookie.split("=")[1];
 
   try {
-    const result = await listFilesInS3(idToken);
+    const result = await listFilesInDynamoDB(idToken);
     console.log("Sending success response");
     return res.status(200).json({ files: result });
   } catch (error) {
