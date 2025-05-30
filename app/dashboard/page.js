@@ -197,12 +197,7 @@ export default function DashboardPage() {
               <DocCard
                 key={file.id}
                 title={`${file.name} - ${Math.round(file.size / 1024)} KB`}
-                contributors={[
-                  "John Doe",
-                  "Jane Doe",
-                  "John Smith",
-                  "Jane Smith",
-                ]}
+                contributors={file.contributors}
                 created={file.creationDate ? new Date(file.creationDate).toLocaleDateString() : "N/A"}
                 updated={file.lastModified ? new Date(file.lastModified).toLocaleDateString() : "N/A"}
                 opened={file.lastOpened ? new Date(file.lastOpened).toLocaleDateString() : "N/A"}

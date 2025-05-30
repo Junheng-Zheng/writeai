@@ -133,25 +133,27 @@ export default function DocCard({ title, contributors, created, updated, opened 
           >
             <p>Contributors</p>
             <div className="flex ">
-              {contributors.map((contributor, index) => (
-                <div
-                  key={contributor}
-                  className={`text-[12px] shadow-md h-full bg-white aspect-square flex items-center justify-center border border-black/10 rounded-full `}
-                  style={{
-                    transform: `translateX(-${index * 8}px)`,
-                  }}
-                >
-                  {contributor.slice(0, 2)}
-                </div>
-              ))}
+              {contributors != null &&
+                contributors.map((contributor, index) => (
+                  <div
+                    key={contributor}
+                    className={`text-[12px] shadow-md h-full bg-white aspect-square flex items-center justify-center border border-black/10 rounded-full `}
+                    style={{
+                      transform: `translateX(-${index * 8}px)`,
+                    }}
+                  >
+                    {contributor.slice(0, 2)}
+                  </div>
+                ))
+              }
               <button
                 onClick={() => setAddContributor(!addContributor)}
                 className={`hover:bg-purple-500 hover:text-white aspect-square transition-all duration-300 shadow-md  bg-white translate-x-[-8px]  flex items-center justify-center border border-black/10 rounded-full ${
                   addContributor ? "h-[32px] w-[32px]" : "h-[44px] w-[44px]"
                 }`}
-                style={{
+                style={contributors != null ? {
                   transform: `translateX(-${contributors.length * 8}px)`,
-                }}
+                } : undefined}
               >
                 <span
                   className={`text-[16px] ${
