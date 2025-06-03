@@ -159,7 +159,7 @@ export default function DashboardPage() {
         Loading user info...
       </div>
     );
-
+    console.log(files);
   return (
     <div>
       <DashboardHeader />
@@ -196,7 +196,7 @@ export default function DashboardPage() {
             </div>
             {files.map((file) => (
               <DocCard
-                id={file.id}
+                key={file.id}
                 title={`${file.name} - ${Math.round(file.size / 1024)} KB`}
                 contributors={file.contributors}
                 created={file.creationDate ? new Date(file.creationDate).toLocaleDateString() : "N/A"}
