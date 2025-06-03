@@ -13,76 +13,76 @@ export default function DashboardPage() {
   const [files, setFiles] = useState([]);
 
   useEffect(() => {
-  async function init() {
-    const params = new URLSearchParams(window.location.search);
-    const code = params.get("code");
+    async function init() {
+      const params = new URLSearchParams(window.location.search);
+      const code = params.get("code");
 
-    async function fetchTokensAndUser() {
-      try {
-        if (code) {
-          const tokenRes = await fetch("/api/auth/token", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ code }),
+      async function fetchTokensAndUser() {
+        try {
+          if (code) {
+            const tokenRes = await fetch("/api/auth/token", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ code }),
+              credentials: "include",
+            });
+
+            if (tokenRes.ok) {
+              const newUrl = new URL(window.location.href);
+              newUrl.searchParams.delete("code");
+              window.history.replaceState({}, "", newUrl);
+            } else {
+              console.warn("Token exchange failed, falling back to cookie.");
+            }
+          }
+
+          const meRes = await fetch("/api/auth/me", {
+            method: "GET",
             credentials: "include",
           });
 
-          if (tokenRes.ok) {
-            const newUrl = new URL(window.location.href);
-            newUrl.searchParams.delete("code");
-            window.history.replaceState({}, "", newUrl);
-          } else {
-            console.warn("Token exchange failed, falling back to cookie.");
-          }
-        }
+          if (!meRes.ok) {
+            const errData = await meRes.json();
 
-        const meRes = await fetch("/api/auth/me", {
-          method: "GET",
-          credentials: "include",
-        });
+            if (meRes.status === 401) {
+              const isLocalhost =
+                window.location.hostname === "localhost" ||
+                window.location.hostname === "127.0.0.1";
 
-        if (!meRes.ok) {
-          const errData = await meRes.json();
+              const redirectUri = isLocalhost
+                ? "http://localhost:3000/dashboard"
+                : "https://writeai-five.vercel.app/dashboard";
 
-          if (meRes.status === 401) {
-            const isLocalhost =
-              window.location.hostname === "localhost" ||
-              window.location.hostname === "127.0.0.1";
+              const loginUrl = `https://us-east-2wosz12rja.auth.us-east-2.amazoncognito.com/login?client_id=7vb6ksijcjvgve65fs0htb9ao4&redirect_uri=${encodeURIComponent(
+                redirectUri
+              )}&response_type=code&scope=email+openid+phone+profile`;
 
-            const redirectUri = isLocalhost
-              ? "http://localhost:3000/dashboard"
-              : "https://writeai-five.vercel.app/dashboard";
+              window.location.href = loginUrl;
+              return;
+            }
 
-            const loginUrl = `https://us-east-2wosz12rja.auth.us-east-2.amazoncognito.com/login?client_id=7vb6ksijcjvgve65fs0htb9ao4&redirect_uri=${encodeURIComponent(
-              redirectUri
-            )}&response_type=code&scope=email+openid+phone+profile`;
-
-            window.location.href = loginUrl;
-            return;
+            setError(errData.error || "Failed to fetch user info");
+            return null;
           }
 
-          setError(errData.error || "Failed to fetch user info");
+          const userInfo = await meRes.json();
+          setUser(userInfo);
+          return userInfo;
+        } catch (err) {
+          setError("Network error");
           return null;
         }
+      }
 
-        const userInfo = await meRes.json();
-        setUser(userInfo);
-        return userInfo;
-      } catch (err) {
-        setError("Network error");
-        return null;
+      const fetchedUser = await fetchTokensAndUser();
+
+      if (fetchedUser) {
+        await handleListFiles();
       }
     }
 
-    const fetchedUser = await fetchTokensAndUser();
-
-    if (fetchedUser) {
-      await handleListFiles();
-    }
-  }
-
-  init();
-}, []);
+    init();
+  }, []);
 
   async function handleFileUpload(file) {
     const formData = new FormData();
@@ -152,14 +152,48 @@ export default function DashboardPage() {
     setUploading(false);
   }
 
+  async function fetchUserMetadata(userIds) {
+    const response = await fetch("/api/aws/batchFetch", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ userIds }),
+      credentials: "include" 
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch users: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data.users; 
+  }
+  
+  useEffect(() => {
+    async function enrichFilesWithContributors() {
+      if (files.length === 0) return;
+      const updatedFiles = await Promise.all(
+        files.map(async (file) => {
+          if (!file.contributors || file.contributors.length === 0) {
+            return { ...file, contributors: [] }; 
+          }
+          const contributors = await fetchUserMetadata(file.contributors || []);
+          return { ...file, contributors };
+        })
+      );
+      setFiles(updatedFiles);
+    }
+    enrichFilesWithContributors();
+  }, [files.length]);
+  
   if (error) return <p style={{ color: "red" }}>Error: {error}</p>;
   if (!user)
-    return (
-      <div className="flex justify-center items-center h-screen">
-        Loading user info...
-      </div>
-    );
-    console.log(files);
+  return (
+    <div className="flex justify-center items-center h-screen">
+      Loading user info...
+    </div>
+  );
   return (
     <div>
       <DashboardHeader />
@@ -197,6 +231,7 @@ export default function DashboardPage() {
             {files.map((file) => (
               <DocCard
                 key={file.id}
+                id={file.id}
                 title={`${file.name} - ${Math.round(file.size / 1024)} KB`}
                 contributors={file.contributors}
                 created={file.creationDate ? new Date(file.creationDate).toLocaleDateString() : "N/A"}

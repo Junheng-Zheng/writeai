@@ -29,6 +29,6 @@ export async function listFilesInDynamoDB(idToken) {
     lastModified: item.updated_at,
     lastOpened: item.last_opened,
     size: item.size,
-    contributors: item.collaborators
+    contributors: item.contributors
   })) || [];
 }

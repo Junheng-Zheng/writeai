@@ -13,7 +13,7 @@ export default function DocCard({ id, title, contributors, created, updated, ope
 
     try {
       console.log("Sending PATCH to /api/aws/update with body:", {
-          key,
+          id,
           updates: {
             contributors: [...(contributors || []), contributorInput],
           },
@@ -24,7 +24,7 @@ export default function DocCard({ id, title, contributors, created, updated, ope
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          key,
+          id,
           updates: {
             contributors: [...(contributors || []), contributorInput],
           },
@@ -171,13 +171,15 @@ export default function DocCard({ id, title, contributors, created, updated, ope
               {contributors != null &&
                 contributors.map((contributor, index) => (
                   <div
-                    key={"contributor"}
-                    className={`text-[12px] shadow-md h-full bg-white aspect-square flex items-center justify-center border border-black/10 rounded-full `}
-                    style={{
-                      transform: `translateX(-${index * 8}px)`,
-                    }}
+                    key={`contributor-${contributor.id || index}`}
+                    className="text-[12px] shadow-md h-full bg-white aspect-square flex items-center justify-center border border-black/10 rounded-full"
+                    style={{ transform: `translateX(-${index * 8}px)` }}
                   >
-                    {contributor.slice(0, 2)}
+                    {(contributor.name || contributor.id || "")
+                      .split(" ")
+                      .map(word => word[0])
+                      .join("")
+                      .toUpperCase()}
                   </div>
                 ))
               }
