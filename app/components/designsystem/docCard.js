@@ -174,6 +174,7 @@ export default function DocCard({ id, title, contributors, created, updated, ope
                     key={`contributor-${contributor.id || index}`}
                     className="text-[12px] shadow-md h-full bg-white aspect-square flex items-center justify-center border border-black/10 rounded-full"
                     style={{ transform: `translateX(-${index * 8}px)` }}
+                    title={contributor.name || contributor.id || ""}
                   >
                     {(contributor.name || contributor.id || "")
                       .split(" ")
