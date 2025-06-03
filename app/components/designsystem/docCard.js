@@ -1,11 +1,46 @@
 import React, { useState } from "react";
 import Button from "./button";
 import Search from "../ui/Search";
-export default function DocCard({ title, contributors, created, updated, opened }) {
+export default function DocCard({ id, title, contributors, created, updated, opened }) {
   const [getSettings, setSettings] = useState(false);
   const [addContributor, setAddContributor] = useState(false);
   const [isSummarizing, setIsSummarizing] = useState(false);
   const [summarizeHover, setSummarizeHover] = useState(false);
+  const [contributorInput, setContributorInput] = useState("");
+
+  async function handleAddContributor() {
+    if (!contributorInput.trim()) return;
+
+    try {
+      console.log("Sending PATCH to /api/aws/update with body:", {
+          id,
+          updates: {
+            contributors: [...(contributors || []), contributorInput],
+          },
+        });
+      const res = await fetch("/api/aws/update", {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id,
+          updates: {
+            contributors: [...(contributors || []), contributorInput],
+          },
+        }),
+      });
+
+      if (!res.ok) throw new Error("Failed to update contributors");
+      setContributorInput("");
+      setAddContributor(false);
+
+      // Optionally: trigger a refresh or lift state up to parent to reflect the update
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   return (
     <div className="relative aspect-[8/11.5] text-black/75 cursor-pointer border flex flex-col group border-black/10">
       <div
@@ -172,7 +207,10 @@ export default function DocCard({ title, contributors, created, updated, opened 
               <Search
                 placeholder="Add Contributor"
                 symbol="Add"
+                value={contributorInput}
+                onChange={(e) => setContributorInput(e.target.value)}
                 className="w-full text-[14px] px-[12px]"
+                onClick={handleAddContributor}
               />
             </div>
           </div>

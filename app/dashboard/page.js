@@ -196,7 +196,7 @@ export default function DashboardPage() {
             </div>
             {files.map((file) => (
               <DocCard
-                key={file.id}
+                id={file.id}
                 title={`${file.name} - ${Math.round(file.size / 1024)} KB`}
                 contributors={file.contributors}
                 created={file.creationDate ? new Date(file.creationDate).toLocaleDateString() : "N/A"}
