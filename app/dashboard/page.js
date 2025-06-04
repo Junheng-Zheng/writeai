@@ -10,6 +10,7 @@ export default function DashboardPage() {
   const [uploading, setUploading] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
   const [status, setStatus] = useState("");
+  const [enriched, setEnriched] = useState(false);
   const [files, setFiles] = useState([]);
 
   useEffect(() => {
@@ -203,21 +204,31 @@ export default function DashboardPage() {
   }
   
   useEffect(() => {
-    async function enrichFilesWithContributors() {
-      if (files.length === 0) return;
-      const updatedFiles = await Promise.all(
-        files.map(async (file) => {
-          if (!file.contributors || file.contributors.length === 0) {
-            return { ...file, contributors: [] }; 
-          }
-          const contributors = await fetchUserMetadata(file.contributors || []);
+  async function enrichFilesWithContributors() {
+    if (files.length === 0 || enriched) return;
+
+    const updatedFiles = await Promise.all(
+      files.map(async (file) => {
+        if (!file.contributors || file.contributors.length === 0) {
+          return { ...file, contributors: [] };
+        }
+        try {
+          const contributors = await fetchUserMetadata(file.contributors);
           return { ...file, contributors };
-        })
-      );
-      setFiles(updatedFiles);
-    }
-    enrichFilesWithContributors();
-  }, [files.length]);
+        } catch (err) {
+          console.error("Contributor fetch failed for file:", file.name, err);
+          return { ...file, contributors: [] };
+        }
+      })
+    );
+
+    setFiles(updatedFiles);
+    setEnriched(true);
+  }
+
+  enrichFilesWithContributors();
+}, [files, enriched]);
+
   
   if (error) return <p style={{ color: "red" }}>Error: {error}</p>;
   if (!user)
@@ -276,6 +287,9 @@ export default function DashboardPage() {
                       f.id === file.id ? { ...f, contributors: newContributors } : f
                     )
                   );
+                }}
+                onDelete={(deletedId) => {
+                  setFiles((prev) => prev.filter((d) => d.id !== deletedId));
                 }}
               />
             ))}

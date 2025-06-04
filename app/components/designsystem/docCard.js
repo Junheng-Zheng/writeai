@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Button from "./button";
 import Search from "../ui/Search";
-export default function DocCard({ id, fetchUserMetadata, onContributorsUpdate, title, contributors, created, updated, opened }) {
+export default function DocCard({ id, fetchUserMetadata, onContributorsUpdate, onDelete, title, contributors, created, updated, opened }) {
   const [getSettings, setSettings] = useState(false);
   const [addContributor, setAddContributor] = useState(false);
   const [isSummarizing, setIsSummarizing] = useState(false);
@@ -91,8 +91,37 @@ export default function DocCard({ id, fetchUserMetadata, onContributorsUpdate, t
       // Optionally: trigger a refresh or lift state up to parent to reflect the update
     } catch (err) {
       console.error(err);
+    
     }
   }
+  
+  async function handleDeleteFile() {
+      const confirmDelete = window.confirm("Are you sure you want to delete this document?");
+      if (!confirmDelete) return;
+
+      try {
+        const res = await fetch("/api/aws/delete", {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ id }),
+        });
+
+        const result = await res.json();
+
+        if (res.ok) {
+          console.log("Deleted successfully:", result);
+          if (onDelete) { onDelete(id); }
+        } else {
+          console.error("Delete failed:", result);
+          alert("Failed to delete the document.");
+        }
+      } catch (error) {
+        console.error("Delete error:", error);
+        alert("An error occurred while deleting.");
+      }
+    }
 
   return (
     <div className="relative aspect-[8/11.5] text-black/75 cursor-pointer border flex flex-col group border-black/10">
@@ -334,6 +363,7 @@ export default function DocCard({ id, fetchUserMetadata, onContributorsUpdate, t
             size={"medium"}
             arrow={false}
             className="w-full text-red-500"
+            onClick={handleDeleteFile}
           >
             Delete
             <i className="fa-solid fa-trash"></i>
