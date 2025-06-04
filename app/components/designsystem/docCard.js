@@ -208,7 +208,7 @@ export default function DocCard({ id, fetchUserMetadata, onContributorsUpdate, o
         <div className="flex flex-col gap-[12px] ">
           <div className="flex items-center gap-[8px]">
             <div className="w-[24px] border border-black/10 h-[24px] rainbow-radial rounded-full"></div>
-            <p className="truncate w-[120px] text-[16px] text-nowrap">
+            <p className="truncate w-[120px] text-[16px] text-nowrap" title={title}>
               {title}
             </p>
           </div>
@@ -231,7 +231,7 @@ export default function DocCard({ id, fetchUserMetadata, onContributorsUpdate, o
         >
           <div className="px-[16px] py-[16px] border-b border-black/10 flex justify-between items-center">
             <div className="flex items-center gap-[8px]">
-              <p className="truncate w-[120px] text-[16px] text-nowrap">
+              <p className="truncate w-[120px] text-[16px] text-nowrap" title={title}>
                 {title}
               </p>
               <i className="text-[12px] fa-solid fa-pencil"></i>
