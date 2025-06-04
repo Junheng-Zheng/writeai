@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import Button from "./button";
 import Search from "../ui/Search";
-export default function DocCard({ id, title, contributors, created, updated, opened }) {
+export default function DocCard({ id, fetchUserMetadata, onContributorsUpdate, title, contributors, created, updated, opened }) {
   const [getSettings, setSettings] = useState(false);
   const [addContributor, setAddContributor] = useState(false);
   const [isSummarizing, setIsSummarizing] = useState(false);
   const [summarizeHover, setSummarizeHover] = useState(false);
   const [contributorInput, setContributorInput] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const [searchLoading, setSearchLoading] = useState(false);
   const [selectedContributorId, setSelectedContributorId] = useState(null);
-
+  const [searchLoading, setSearchLoading] = useState(false);
+  const [localContributors, setLocalContributors] = useState(contributors || []);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -71,7 +71,20 @@ export default function DocCard({ id, title, contributors, created, updated, ope
         }),
       });
 
-      if (!res.ok) throw new Error("Failed to update contributors");
+      if (res.ok) {
+        const updatedContributorUsers = await fetchUserMetadata([
+          ...contributors.map((c) => c.id),
+          selectedContributorId,
+        ]);
+
+        setLocalContributors(updatedContributorUsers);
+
+        if (onContributorsUpdate) {
+          onContributorsUpdate(updatedContributorUsers); // update parent state
+        }
+      }else {
+        throw new Error("Failed to update contributors");
+      }
       setContributorInput("");
       setAddContributor(false);
 

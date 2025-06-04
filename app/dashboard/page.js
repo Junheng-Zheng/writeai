@@ -237,6 +237,14 @@ export default function DashboardPage() {
                 created={file.creationDate ? new Date(file.creationDate).toLocaleDateString() : "N/A"}
                 updated={file.lastModified ? new Date(file.lastModified).toLocaleDateString() : "N/A"}
                 opened={file.lastOpened ? new Date(file.lastOpened).toLocaleDateString() : "N/A"}
+                fetchUserMetadata={fetchUserMetadata}
+                onContributorsUpdate={(newContributors) => {
+                  setFiles(prevFiles =>
+                    prevFiles.map(f =>
+                      f.id === file.id ? { ...f, contributors: newContributors } : f
+                    )
+                  );
+                }}
               />
             ))}
           </div>
