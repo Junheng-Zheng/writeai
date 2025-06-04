@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "./button";
 import Search from "../ui/Search";
 export default function DocCard({ id, title, contributors, created, updated, opened }) {
@@ -7,6 +7,46 @@ export default function DocCard({ id, title, contributors, created, updated, ope
   const [isSummarizing, setIsSummarizing] = useState(false);
   const [summarizeHover, setSummarizeHover] = useState(false);
   const [contributorInput, setContributorInput] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const [searchLoading, setSearchLoading] = useState(false);
+  const [selectedContributorId, setSelectedContributorId] = useState(null);
+
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      if (addContributor && contributorInput.trim()) {
+        fetchContributors(contributorInput);
+      } else {
+        setSearchResults([]);
+      }
+    }, 300); // 300ms debounce delay
+
+    return () => clearTimeout(timeout); // Clear the timeout if input changes quickly
+  }, [contributorInput, addContributor]);
+
+  async function fetchContributors(query) {
+    if (!query.trim()) {
+      setSearchResults([]);
+      return;
+    }
+
+    setSearchLoading(true);
+    try {
+      const res = await fetch(`/api/aws/search?q=${encodeURIComponent(query)}`);
+      const data = await res.json();
+      if (res.ok && Array.isArray(data.users)) {
+        setSearchResults(data.users);
+      } else {
+        console.error("Invalid response", data);
+        setSearchResults([]);
+      }
+    } catch (err) {
+      console.error("Error searching users", err);
+      setSearchResults([]);
+    } finally {
+      setSearchLoading(false);
+    }
+  }
 
   async function handleAddContributor() {
     if (!contributorInput.trim()) return;
@@ -15,7 +55,7 @@ export default function DocCard({ id, title, contributors, created, updated, ope
       console.log("Sending PATCH to /api/aws/update with body:", {
           id,
           updates: {
-            contributors: [...(contributors || []), contributorInput],
+            contributors: [...(contributors || []), selectedContributorId],
           },
         });
       const res = await fetch("/api/aws/update", {
@@ -26,7 +66,7 @@ export default function DocCard({ id, title, contributors, created, updated, ope
         body: JSON.stringify({
           id,
           updates: {
-            contributors: [...(contributors || []), contributorInput],
+            contributors: [...(contributors || []), selectedContributorId],
           },
         }),
       });
@@ -215,6 +255,24 @@ export default function DocCard({ id, title, contributors, created, updated, ope
                 className="w-full text-[14px] px-[12px]"
                 onClick={handleAddContributor}
               />
+              {addContributor && searchResults.length > 0 && (
+                <div className="mt-2 flex flex-col gap-2 text-sm">
+                  {searchResults.map((user) => (
+                    <button
+                      key={user.id}
+                      className="text-left p-2 hover:bg-black/5 border border-black/10 rounded"
+                      onClick={() => {
+                        setContributorInput(user.name || user.email || "");
+                        setSelectedContributorId(user.id);
+                        setSearchResults([]);
+                      }}
+                    >
+                      <p className="font-medium">{user.name}</p>
+                      <p className="text-xs text-black/60">{user.email}</p>
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
           <div
