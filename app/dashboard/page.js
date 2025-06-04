@@ -84,6 +84,29 @@ export default function DashboardPage() {
     init();
   }, []);
 
+  async function waitForFileProcessing(fileName, timeout = 30000, interval = 2000) {
+    const start = Date.now();
+
+    while (Date.now() - start < timeout) {
+      try {
+        const response = await fetch("/api/aws/list", { credentials: "include" });
+        if (!response.ok) throw new Error("Failed to list files");
+        const data = await response.json();
+
+        if (data.files.some(f => f.name === fileName)) {
+          return true; // Metadata is ready
+        }
+      } catch (err) {
+        console.warn("Polling error:", err);
+      }
+
+      // Wait before next poll
+      await new Promise(res => setTimeout(res, interval));
+    }
+
+    throw new Error("Timeout waiting for file to be processed");
+  }
+
   async function handleFileUpload(file) {
     const formData = new FormData();
     formData.append("file", file);
@@ -148,8 +171,17 @@ export default function DashboardPage() {
       return;
     }
     setUploading(true);
-    await handleFileUpload(selectedFile);
-    setUploading(false);
+    try {
+      await handleFileUpload(selectedFile);
+
+      await waitForFileProcessing(selectedFile.name);
+
+      await handleListFiles();
+    } catch (err) {
+      alert(err.message);
+    } finally {
+      setUploading(false);
+    }
   }
 
   async function fetchUserMetadata(userIds) {
