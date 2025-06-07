@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Button from "./button";
 import Search from "../ui/Search";
-export default function DocCard({ id, fetchUserMetadata, onContributorsUpdate, onDelete, title, contributors, created, updated, opened }) {
+export default function DocCard({ id, fetchUserMetadata, onContributorsUpdate, onDelete, title, contributors, created, updated, opened, onClick }) {
   const [getSettings, setSettings] = useState(false);
   const [addContributor, setAddContributor] = useState(false);
   const [isSummarizing, setIsSummarizing] = useState(false);
@@ -124,6 +124,7 @@ export default function DocCard({ id, fetchUserMetadata, onContributorsUpdate, o
     }
 
   return (
+    
     <div className="relative aspect-[8/11.5] text-black/75 cursor-pointer border flex flex-col group border-black/10">
       <div
         className={`absolute w-full bottom-0 flex flex-col right-0 z-10 transition-all overflow-hidden duration-300 bg-white  ${
@@ -137,7 +138,7 @@ export default function DocCard({ id, fetchUserMetadata, onContributorsUpdate, o
             isSummarizing ? "opacity-100 delay-100" : "opacity-0"
           }`}
         >
-          <Button variant={"primary"} className="w-full" size={"medium"}>
+          <Button variant={"primary"} className="w-full" size={"medium"} onClick={onClick}>
             Go to Document
           </Button>
         </div>
@@ -175,7 +176,7 @@ export default function DocCard({ id, fetchUserMetadata, onContributorsUpdate, o
           onMouseEnter={() => setSummarizeHover(true)}
           onClick={() => setIsSummarizing(true)}
           onMouseLeave={() => setSummarizeHover(false)}
-          className={`absolute bottom-0 right-0 overflow-hidden h-[36px] px-[12px] flex items-center gap-[8px]  bg-black/10 group-hover:bg-[rgb(157,255,0)] group-hover:border border-black/10   transition-all duration-300 ${
+          className={`z-10 absolute bottom-0 right-0 overflow-hidden h-[36px] px-[12px] flex items-center gap-[8px] bg-black/10 group-hover:bg-[rgb(157,255,0)] group-hover:border border-black/10 transition-all duration-300 ${
             summarizeHover
               ? "w-full justify-between"
               : "w-[36px] rounded-tl-[8px]"
@@ -203,6 +204,14 @@ export default function DocCard({ id, fetchUserMetadata, onContributorsUpdate, o
             ></path>
           </svg>
         </button>
+
+        <div
+          className="absolute inset-0 z-0 your-doc-card-class"
+          onClick={onClick}
+          style={{ cursor: "pointer" }}
+          tabIndex={0}
+          role="button"
+        ></div>
       </div>
       <div className="p-[24px] border-t flex justify-between items-center border-black/10">
         <div className="flex flex-col gap-[12px] ">

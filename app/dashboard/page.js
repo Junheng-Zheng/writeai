@@ -291,6 +291,10 @@ export default function DashboardPage() {
                 onDelete={(deletedId) => {
                   setFiles((prev) => prev.filter((d) => d.id !== deletedId));
                 }}
+                onClick={() => {
+                  const cleanedId = file.id.startsWith("DOC#") ? file.id.slice(4) : file.id;
+                  window.location.href = `/writeai?id=${cleanedId}`;
+                }}
               />
             ))}
           </div>

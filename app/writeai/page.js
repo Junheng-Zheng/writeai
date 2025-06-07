@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useCallback, useEffect, useRef } from "react";
 import { createEditor, Editor } from "slate";
+import { useSearchParams } from "next/navigation";
 import { Slate, Editable, withReact } from "slate-react";
 import Dropdown from "../components/ui/Dropdown";
 import Button from "../components/designsystem/button";
@@ -35,6 +36,42 @@ const Page = () => {
   const editorRef = useRef(null);
   const [fontSize, setFontSize] = useState(12);
   const [fontFamily, setFontFamily] = useState("Arial");
+
+  const searchParams = useSearchParams();
+  const fileId = searchParams.get("id");
+
+  const [editor] = useState(() => withReact(createEditor()));
+  const [value, setValue] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchFileContents() {
+      if (!fileId) return;
+      try {
+        const res = await fetch(`/api/aws/file?id=${fileId}`, {
+          credentials: "include",
+        });
+        if (res.ok) {
+          const data = await res.json();
+          setValue(data.file?.content || initialValue);
+        } else {
+          setValue(initialValue);
+        }
+      } catch (err) {
+        console.error("Failed to fetch file:", err);
+        setValue(initialValue);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    fetchFileContents();
+  }, [fileId]);
+
+  useEffect(() => {
+    if (!isLoading) focusEditor();
+  }, [isLoading]);
+
   const focusEditor = () => {
     if (editorRef.current) {
       editorRef.current.focus();
@@ -45,7 +82,6 @@ const Page = () => {
     focusEditor();
   }, []);
 
-  const [editor] = useState(() => withReact(createEditor()));
 
   const toggleBold = useCallback(() => {
     const isBold = Editor.marks(editor)?.bold === true;
@@ -141,6 +177,9 @@ const Page = () => {
     }
     return <span {...attributes}>{children}</span>;
   }, []);
+
+  console.log("Editor Value:", value);
+  if (isLoading || !value) return <div className="flex justify-center items-center h-screen">Loading document...</div>;
 
   return (
     <div className="w-full h-full flex">
@@ -269,7 +308,7 @@ const Page = () => {
             {/* Add inch numbers */}
           </div>
         </div>
-        <Slate editor={editor} initialValue={initialValue}>
+        <Slate editor={editor} initialValue={value} onChange={(newValue) => setValue(newValue)}>
           <Editable
             ref={editorRef}
             className="w-[8.5in] h-[11in] p-[1in] border border-black/10 focus:outline-none"
