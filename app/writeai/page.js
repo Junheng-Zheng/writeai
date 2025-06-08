@@ -1,5 +1,11 @@
 "use client";
-import React, { useState, useCallback, useEffect, useRef } from "react";
+import React, {
+  useState,
+  useCallback,
+  useEffect,
+  useRef,
+  Suspense,
+} from "react";
 import { createEditor, Editor } from "slate";
 import { useSearchParams } from "next/navigation";
 import { Slate, Editable, withReact } from "slate-react";
@@ -32,21 +38,37 @@ const CustomButton = ({ children, onClick }) => {
   );
 };
 
-
 const Page = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const editorRef = useRef(null);
   const [fontSize, setFontSize] = useState(12);
   const [fontFamily, setFontFamily] = useState("Arial");
 
+  return (
+    <Suspense
+      fallback={
+        <div className="flex justify-center items-center h-screen">
+          Loading...
+        </div>
+      }
+    >
+      <DocumentContent />
+    </Suspense>
+  );
+};
+
+const DocumentContent = () => {
   const searchParams = useSearchParams();
   const fileId = searchParams.get("id");
-
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const editorRef = useRef(null);
+  const [fontSize, setFontSize] = useState(12);
+  const [fontFamily, setFontFamily] = useState("Arial");
   const [editor] = useState(() => withReact(createEditor()));
   const [value, setValue] = useState(null);
   const [title, setTitle] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const[status, setStatus] = useState("Saved to Writely");
+  const [status, setStatus] = useState("Saved to Writely");
 
   useEffect(() => {
     async function fetchFileContents() {
@@ -86,7 +108,6 @@ const Page = () => {
   useEffect(() => {
     focusEditor();
   }, []);
-
 
   const toggleBold = useCallback(() => {
     const isBold = Editor.marks(editor)?.bold === true;
@@ -243,7 +264,12 @@ const Page = () => {
     }, 1000); // 1 second debounce
   }
 
-  if (isLoading || !value) return <div className="flex justify-center items-center h-screen">Loading document...</div>;
+  if (isLoading || !value)
+    return (
+      <div className="flex justify-center items-center h-screen">
+        Loading document...
+      </div>
+    );
 
   return (
     <div className="w-full h-full flex">
@@ -261,7 +287,6 @@ const Page = () => {
           </div>
           <div className="w-full flex items-center ">
             <div className="text[14px] w-full border-t border-b flex gap-[16px] items-center border-black/10  p-[24px] px-[48px]">
-              {/* <div className="w-[40px] h-[40px] bg-black/10 rounded-full"></div> */}
               <Button
                 variant="primary"
                 size="medium"
@@ -331,31 +356,6 @@ const Page = () => {
             </div>
           </div>
         </div>
-        {/* <div className="flex w-full gap-[24px]">
-        <CustomButton onClick={toggleBold}>Bold</CustomButton>
-        <CustomButton onClick={toggleItalic}>Italic</CustomButton>
-        <CustomButton onClick={toggleUnderline}>Underline</CustomButton>
-        <CustomButton onClick={toggleStrikethrough}>Strikethrough</CustomButton>
-        <div className="flex items-center justify-center gap-2">
-          <i
-            onClick={() => changeFontSize(Math.max(8, fontSize - 1))}
-            className="fa-solid fa-minus cursor-pointer"
-          ></i>
-          <p>{fontSize}pt</p>
-          <i
-            onClick={() => changeFontSize(Math.min(72, fontSize + 1))}
-            className="fa-solid fa-plus cursor-pointer"
-          ></i>
-        </div>
-        <Dropdown
-          options={["Arial", "Times New Roman", "Courier New", "Georgia"]}
-          onChange={(option) => changeFontFamily(option)}
-        />
-        <Dropdown
-          options={["Left", "Center", "Right"]}
-          onChange={(option) => changeAlign(option)}
-        />
-      </div> */}
         <div className="w-full flex justify-center border-b-[1px] border-black/10">
           <div className="relative w-[8.5in] h-[20px] flex justify-between items-end">
             {Array.from({ length: 69 }).map((_, i) => (
@@ -370,7 +370,6 @@ const Page = () => {
                 }}
               ></div>
             ))}
-            {/* Add inch numbers */}
           </div>
         </div>
         <Slate editor={editor} initialValue={value} onChange={handleChange}>
@@ -418,13 +417,6 @@ const Page = () => {
         } sticky top-0 h-[100vh] border-l  overflow-hidden flex border-black/10 transition-all duration-300`}
       >
         <div className="w-full p-[36px] h-[100vh] flex flex-col gap-[24px] inset-0">
-          {/* <div className="w-full flex items-center justify-between">
-            <p>Writely</p>
-            <i
-              className="fa-solid fa-xmark"
-              onClick={() => setIsSidebarOpen(false)}
-            ></i>
-          </div> */}
           <div className="flex-1 border rounded-[12px] border-black/10"></div>
           <Search placeholder="Search..." />
         </div>
