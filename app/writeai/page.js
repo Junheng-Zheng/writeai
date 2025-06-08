@@ -9,6 +9,7 @@ import Search from "../components/ui/Search";
 import AutocompleteToggle from "../components/designsystem/autocompleteToggle";
 import Counter from "../components/designsystem/counter";
 import FontFamilyDropdown from "../components/designsystem/fontFamilyDropdown";
+
 const initialValue = [
   {
     type: "paragraph",
@@ -31,6 +32,7 @@ const CustomButton = ({ children, onClick }) => {
   );
 };
 
+
 const Page = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const editorRef = useRef(null);
@@ -42,7 +44,9 @@ const Page = () => {
 
   const [editor] = useState(() => withReact(createEditor()));
   const [value, setValue] = useState(null);
+  const [title, setTitle] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const[status, setStatus] = useState("Saved to Writely");
 
   useEffect(() => {
     async function fetchFileContents() {
@@ -54,6 +58,7 @@ const Page = () => {
         if (res.ok) {
           const data = await res.json();
           setValue(data.file?.content || initialValue);
+          setTitle(data.file?.name || "Untitled Document");
         } else {
           setValue(initialValue);
         }
@@ -178,7 +183,66 @@ const Page = () => {
     return <span {...attributes}>{children}</span>;
   }, []);
 
-  console.log("Editor Value:", value);
+  async function saveDocument() {
+    if (!value || !fileId) return;
+    try {
+      setStatus("Saving...");
+      const res = await fetch(`/api/aws/file?id=${fileId}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          content: value,
+          title: title || "Untitled Document",
+        }),
+        credentials: "include",
+      });
+      setStatus("Saved to Writely");
+      if (res.ok) {
+        console.log("Document saved successfully");
+      } else {
+        console.error("Failed to save document");
+      }
+    } catch (err) {
+      console.error("Error saving document:", err);
+    }
+  }
+
+  const debounceTimer = useRef(null);
+
+  async function handleChange(newValue) {
+    setValue(newValue);
+    if (debounceTimer.current) clearTimeout(debounceTimer.current);
+    debounceTimer.current = setTimeout(async () => {
+      try {
+        setStatus("Saving...");
+        const res = await fetch(`/api/aws/update`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify({
+            id: `DOC#${fileId}`,
+            updates: {
+              slate_json: newValue,
+            },
+          }),
+        });
+        if (res.ok) {
+          setStatus("Saved to Writely");
+          console.log("Document saved successfully");
+        } else {
+          console.error("Failed to save document");
+          setStatus("Failed to save document");
+        }
+      } catch (err) {
+        console.error("Error saving document:", err);
+      }
+    }, 1000); // 1 second debounce
+  }
+
   if (isLoading || !value) return <div className="flex justify-center items-center h-screen">Loading document...</div>;
 
   return (
@@ -188,7 +252,8 @@ const Page = () => {
           <div className="w-full flex items-center px-[48px]  justify-between py-[24px]">
             <div className="flex items-center gap-[12px]">
               <div className="w-[40px] h-[40px] rainbow-radial rounded-full"></div>
-              <p className="text-[18px]">Untitled Document</p>
+              <p className="text-[18px]">{title}</p>
+              <p>{status}</p>
             </div>
             <Button variant="tertiary" size="medium" arrow={false}>
               Share +
@@ -308,7 +373,7 @@ const Page = () => {
             {/* Add inch numbers */}
           </div>
         </div>
-        <Slate editor={editor} initialValue={value} onChange={(newValue) => setValue(newValue)}>
+        <Slate editor={editor} initialValue={value} onChange={handleChange}>
           <Editable
             ref={editorRef}
             className="w-[8.5in] h-[11in] p-[1in] border border-black/10 focus:outline-none"
