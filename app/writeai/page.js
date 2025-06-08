@@ -213,6 +213,7 @@ const Page = () => {
 
   async function handleChange(newValue) {
     setValue(newValue);
+    if(newValue === value) return;
     if (debounceTimer.current) clearTimeout(debounceTimer.current);
     debounceTimer.current = setTimeout(async () => {
       try {
