@@ -265,6 +265,13 @@ const DocumentContent = () => {
     }, 1000); // 1 second debounce
   }
 
+  const [showUploadMenu, setShowUploadMenu] = useState(false);
+  const fileInputRef = useRef(null);
+
+  const handleReferencesClick = () => {
+    setShowUploadMenu(true);
+  };
+
   if (isLoading || !value)
     return (
       <div className="flex justify-center items-center h-screen">
@@ -293,6 +300,7 @@ const DocumentContent = () => {
                 size="medium"
                 arrow={false}
                 className={`${isSidebarOpen ? "w-full" : "w-fit"}`}
+                onClick={handleReferencesClick}
               >
                 {isSidebarOpen ? (
                   <i className="fa-solid fa-file-lines"></i>
@@ -302,6 +310,27 @@ const DocumentContent = () => {
 
                 <i className="text-[12px] fa-solid fa-plus"></i>
               </Button>
+              {showUploadMenu && (
+                <div
+                  className="absolute left-0 mt-2 z-50 bg-white p-6 rounded shadow-lg flex flex-col items-center"
+                  style={{ top: "100%" }}
+                >
+                  <h2 className="mb-4 text-lg font-semibold">Upload Reference File</h2>
+                  <input
+                    type="file"
+                    multiple
+                    ref={fileInputRef}
+                    // onChange={handleFileChange}
+                    className="mb-4"
+                  />
+                  <button
+                    className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
+                    onClick={() => setShowUploadMenu(false)}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              )}
               <i className=" fa-solid fa-print"></i>
               <i className="fa-solid fa-undo-alt"></i>
               <i className="fa-solid fa-redo-alt"></i>
