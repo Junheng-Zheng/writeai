@@ -1,4 +1,4 @@
-import { listFilesInDynamoDB } from "../../../utils/aws/listFilesinDynamo";
+import { listFilesInDynamoDB } from "../../../../utils/aws/listFilesinDynamo";
 
 export const config = {
   api: {

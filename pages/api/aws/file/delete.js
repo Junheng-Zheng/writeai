@@ -1,4 +1,4 @@
-import { deleteFileInDynamoDB } from "../../../utils/aws/deleteFileinDynamo.js";
+import { deleteFileInDynamoDB } from "../../../../utils/aws/deleteFileinDynamo.js";
 
 export const config = {
   api: {

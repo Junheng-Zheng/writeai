@@ -32,7 +32,7 @@ export default function DocCard({ id, fetchUserMetadata, onContributorsUpdate, o
 
     setSearchLoading(true);
     try {
-      const res = await fetch(`/api/aws/search?q=${encodeURIComponent(query)}`);
+      const res = await fetch(`/api/aws/user/search?q=${encodeURIComponent(query)}`);
       const data = await res.json();
       if (res.ok && Array.isArray(data.users)) {
         setSearchResults(data.users);
@@ -52,13 +52,13 @@ export default function DocCard({ id, fetchUserMetadata, onContributorsUpdate, o
     if (!contributorInput.trim()) return;
 
     try {
-      console.log("Sending PATCH to /api/aws/update with body:", {
+      console.log("Sending PATCH to /api/aws/file/update with body:", {
           id,
           updates: {
             contributors: [...(contributors || []), selectedContributorId],
           },
         });
-      const res = await fetch("/api/aws/update", {
+      const res = await fetch("/api/aws/file/update", {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -72,8 +72,9 @@ export default function DocCard({ id, fetchUserMetadata, onContributorsUpdate, o
       });
 
       if (res.ok) {
+        console.log("Contributors updated successfully, attempting to fetch updated user metadata...");
         const updatedContributorUsers = await fetchUserMetadata([
-          ...contributors.map((c) => c.id),
+          ...(Array.isArray(contributors) ? contributors.map((c) => c.id) : []),
           selectedContributorId,
         ]);
 
@@ -100,7 +101,7 @@ export default function DocCard({ id, fetchUserMetadata, onContributorsUpdate, o
       if (!confirmDelete) return;
 
       try {
-        const res = await fetch("/api/aws/delete", {
+        const res = await fetch("/api/aws/file/delete", {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",

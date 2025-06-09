@@ -1,4 +1,4 @@
-import { batchGetUsersinDynamo } from "../../../utils/aws/batchGetUsersinDynamo.js";
+import { batchGetUsersinDynamo } from "../../../../utils/aws/batchGetUsersinDynamo.js";
 
 export const config = {
   api: {

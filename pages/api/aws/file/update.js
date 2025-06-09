@@ -1,4 +1,4 @@
-import { updateFileInDynamoDB } from "../../../utils/aws/updateFileinDynamo";
+import { updateFileInDynamoDB } from "../../../../utils/aws/updateFileinDynamo";
 
 export const config = {
   api: {

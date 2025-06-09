@@ -90,7 +90,7 @@ export default function DashboardPage() {
 
     while (Date.now() - start < timeout) {
       try {
-        const response = await fetch("/api/aws/list", { credentials: "include" });
+        const response = await fetch("/api/aws/file/list", { credentials: "include" });
         if (!response.ok) throw new Error("Failed to list files");
         const data = await response.json();
 
@@ -115,7 +115,7 @@ export default function DashboardPage() {
     try {
       setUploading(true);
 
-      const response = await fetch("/api/aws/upload", {
+      const response = await fetch("/api/aws/file/upload", {
         method: "POST",
         credentials: "include",
         body: formData,
@@ -145,7 +145,7 @@ export default function DashboardPage() {
     try {
       setUploading(true);
 
-      const response = await fetch("/api/aws/list", {
+      const response = await fetch("/api/aws/file/list", {
         method: "GET",
         credentials: "include", // ensures cookies (like id_token) are sent
       });
@@ -186,7 +186,7 @@ export default function DashboardPage() {
   }
 
   async function fetchUserMetadata(userIds) {
-    const response = await fetch("/api/aws/batchFetch", {
+    const response = await fetch("/api/aws/user/batchFetch", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

@@ -1,4 +1,4 @@
-import { getFileinDynamo } from "../../../utils/aws/getFileinDynamo.js";
+import { getFileinDynamo } from "../../../../utils/aws/getFileinDynamo.js";
 import { unmarshall } from "@aws-sdk/util-dynamodb";
 
 export const config = {

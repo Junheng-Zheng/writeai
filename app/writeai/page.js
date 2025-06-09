@@ -74,7 +74,7 @@ const DocumentContent = () => {
     async function fetchFileContents() {
       if (!fileId) return;
       try {
-        const res = await fetch(`/api/aws/file?id=${fileId}`, {
+        const res = await fetch(`/api/aws/file/file?id=${fileId}`, {
           credentials: "include",
         });
         if (res.ok) {
@@ -208,7 +208,7 @@ const DocumentContent = () => {
     if (!value || !fileId) return;
     try {
       setStatus("Saving...");
-      const res = await fetch(`/api/aws/file?id=${fileId}`, {
+      const res = await fetch(`/api/aws/file/file?id=${fileId}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -239,7 +239,7 @@ const DocumentContent = () => {
     debounceTimer.current = setTimeout(async () => {
       try {
         setStatus("Saving...");
-        const res = await fetch(`/api/aws/update`, {
+        const res = await fetch(`/api/aws/file/update`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",

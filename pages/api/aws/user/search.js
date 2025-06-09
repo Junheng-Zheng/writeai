@@ -1,4 +1,4 @@
-import { searchUsersinDynamo } from "../../../utils/aws/searchUsersinDynamo.js";
+import { searchUsersinDynamo } from "../../../../utils/aws/searchUsersinDynamo.js";
 
 export const config = {
     api: {
